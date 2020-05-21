@@ -1,19 +1,39 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component} from 'react';
+import Maskani from './maskani';
+import Taarifa from './taarifa';
+import Oda from './oda';
+import Tabi from './tab';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import { Tab } from 'react-tabs';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+
+const AppNavigator = createStackNavigator ({
+  
+      Maskani: Maskani,
+      Taarifa: Taarifa,
+      Oda: Oda,
+      Tabi : { screen: Tabi,
+        navigationOptions: {
+          headerShown: false
+        }
+     },
+
+},
+{
+  initialRouteName: 'Tabi',
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+);
+
+const AppContainer = createAppContainer(AppNavigator);
+export default class Darasa extends Component{
+
+    render(){
+      return (
+
+            <AppContainer />
+
+  );
+}
+  }
