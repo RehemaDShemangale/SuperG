@@ -1286,14 +1286,11 @@
     lodash "^4.5.0"
     prop-types "^15.6.1"
 
-<<<<<<< HEAD
 "@valdio/react-native-scrollable-tabview@^0.8.12":
   version "0.8.12"
   resolved "https://registry.yarnpkg.com/@valdio/react-native-scrollable-tabview/-/react-native-scrollable-tabview-0.8.12.tgz#be3b28387459e4055d1b191ada98b98d3b496ca1"
   integrity sha512-4aYnb7lA4Mo7+U2xijbKwJ7jcphBJs0ILVlvqa+SB9jg1sy1M+CkcNHwUTTnK60lCFXLCseJmECtu/JRR8ZpzA==
 
-=======
->>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
 abort-controller@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/abort-controller/-/abort-controller-3.0.0.tgz#eaf54d53b62bae4138e809ca225c8439a6efb392"
@@ -2416,17 +2413,10 @@ expo-web-browser@~8.2.1:
   dependencies:
     compare-urls "^2.0.0"
 
-<<<<<<< HEAD
 expo@^37.0.12:
   version "37.0.12"
   resolved "https://registry.yarnpkg.com/expo/-/expo-37.0.12.tgz#9e1a7ce138cd6c580a112e20992754c7c7e9c97e"
   integrity sha512-roqGc7zTh3esYxAi95AWpNkrztO6istuKQNfYNwHbWmHbqbilZLzRNb844WWK++Uy4UxaObO5ymmacZyq4JnwA==
-=======
-expo@~37.0.3:
-  version "37.0.11"
-  resolved "https://registry.yarnpkg.com/expo/-/expo-37.0.11.tgz#f7e1838941d40ea5ccb6ab01301f103ddee5ffe7"
-  integrity sha512-O9rpK/tgProp8E1IkmxcAut0zySNVOfpb8+hzYsOUegFO3r7m8H4kYFXZULTwekMSAmnBxX0+qmzELRxlmKxHQ==
->>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
   dependencies:
     "@babel/runtime" "^7.1.2"
     "@expo/vector-icons" "^10.0.2"

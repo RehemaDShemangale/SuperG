@@ -1,11 +1,8 @@
 import React, { Component} from 'react';
 import { FlatList, Text, View, ImageBackground, TextInput,Image, TabBarIOS } from 'react-native';
 import {  EvilIcons, SimpleLineIcons,} from '@expo/vector-icons';
-<<<<<<< HEAD
 import Jisajiri from './jisajir';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-=======
->>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
 
 
 export default class Maskani extends Component {
@@ -16,7 +13,6 @@ export default class Maskani extends Component {
   render(){
     return (
      
-<<<<<<< HEAD
       <View style={{flex:1,backgroundColor:'rgb(255, 255, 255)',paddingHorizontal:15}}>
            
            <View style={{alignSelf:'center',marginBottom:10,alignItems:'center',marginTop:30}}>
@@ -58,11 +54,6 @@ export default class Maskani extends Component {
               </View>
               </View>
       </View>
-=======
-      <View style={{backgroundColor:'pink',height:220,width:165,paddingHorizontal:5,marginLeft:5,marginBottom:5}}>
-
-          </View>
->>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
 
   
       
@@ -70,11 +61,7 @@ export default class Maskani extends Component {
   }
   }
 
-<<<<<<< HEAD
 
 
-=======
- 
->>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
 
 
