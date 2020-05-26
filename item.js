@@ -2,8 +2,11 @@ import React, { Component} from 'react';
 import { Text, View,  Image, TextInput, ImageBackground,FlatList} from 'react-native';
 import { EvilIcons,SimpleLineIcons, AntDesign} from '@expo/vector-icons';
 import {ScrollableTabView,DefaultTabBar} from '@valdio/react-native-scrollable-tabview';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { Tab } from 'react-tabs';
+import VinywajiPage from './vinywaj';
+import GesiPage from './gesi';
+import VituPage from './v2vingine';
 
 
 
@@ -84,26 +87,14 @@ export default class Maskani extends Component {
                 </View>    
 
           <ScrollableTabView
-            renderTabBar={() => <DefaultTabBar />}
-            ref={(tabView) => { this.tabView = tabView; }}
+            style={{backgroundColor:'white'}}
+            showsHorizontalScrollIndicator={false}
+           // renderTabBar={() => <DefaultTabBar />}
+            //ref={(tabView) => { this.tabView = tabView; }}
           >
-              <Text tabLabel='Vyakula'>My</Text>
-              <Text tabLabel='Vinywaji'>favorite</Text>
-              <Text tabLabel='Gesi'>project</Text>
-              <Text tabLabel='Vitu vingine'>one</Text>
-
-            <TouchableOpacity tabLabel='Back' onPress={() => this.tabView.goToPage(0)}>
-              <Text>Lets go back!</Text>
-            </TouchableOpacity>
-          </ScrollableTabView> 
-
-   
-        <View
-        style={{height:78}}
-        />
-
-
-                  <FlatList
+              
+              <FlatList
+                      tabLabel='Vyakula'
                       data={live}
                       keyExtractor={this.keyExtractor}
                       renderItem={this.renderItem}
@@ -113,6 +104,13 @@ export default class Maskani extends Component {
                         paddingHorizontal:2
                       }}
                   />
+              <VinywajiPage tabLabel='Vinywaji' />
+              <GesiPage tabLabel='Gesi' />
+              <VituPage tabLabel='Vitu vingine' />
+
+          </ScrollableTabView> 
+
+
    
                 </View>                                                                             
 
