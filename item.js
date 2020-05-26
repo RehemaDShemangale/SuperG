@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import { Text, View,  Image, TextInput, ImageBackground,FlatList} from 'react-native';
 import { EvilIcons,SimpleLineIcons, AntDesign} from '@expo/vector-icons';
 import {ScrollableTabView,DefaultTabBar} from '@valdio/react-native-scrollable-tabview';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Tab } from 'react-tabs';
 
 
@@ -64,20 +65,6 @@ export default class Maskani extends Component {
 
     <View  style={{flex:1,backgroundColor:'rgb(0, 204, 68)'}}>
 
-        <ScrollableTabView
-            renderTabBar={() => <DefaultTabBar />}
-            ref={(tabView) => { this.tabView = tabView; }}
-          >
-              <Text tabLabel='Vyakula'>My</Text>
-              <Text tabLabel='Vinywaji'>favorite</Text>
-              <Text tabLabel='Gesi'>project</Text>
-              <Text tabLabel='Vitu vingine'>one</Text>
-
-            <TouchableOpacity tabLabel='Back' onPress={() => this.tabView.goToPage(0)}>
-              <Text>Lets go back!</Text>
-            </TouchableOpacity>
-          </ScrollableTabView>;
-
                 <View style={{flexDirection:'row',alignItems:'center',marginTop:30}}>
                 <View style={{flexDirection:'row',backgroundColor:'#f1f2f6',justifyContent:'space-between',alignItems:'center'
                 ,width:200,borderRadius:5,marginHorizontal:20,paddingHorizontal:10}}>
@@ -94,7 +81,21 @@ export default class Maskani extends Component {
                   name="settings"
                   color="#57606f" size={25} 
                 />
-                </View>     
+                </View>    
+
+          <ScrollableTabView
+            renderTabBar={() => <DefaultTabBar />}
+            ref={(tabView) => { this.tabView = tabView; }}
+          >
+              <Text tabLabel='Vyakula'>My</Text>
+              <Text tabLabel='Vinywaji'>favorite</Text>
+              <Text tabLabel='Gesi'>project</Text>
+              <Text tabLabel='Vitu vingine'>one</Text>
+
+            <TouchableOpacity tabLabel='Back' onPress={() => this.tabView.goToPage(0)}>
+              <Text>Lets go back!</Text>
+            </TouchableOpacity>
+          </ScrollableTabView> 
 
    
         <View

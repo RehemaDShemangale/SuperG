@@ -99,9 +99,7 @@ const App = createMaterialTopTabNavigator(
     }
   },
 
-  {
-    tabBarComponent:TabBar,
-}
+ 
 );
 export default createAppContainer(App);
 
