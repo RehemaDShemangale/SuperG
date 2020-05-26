@@ -12,8 +12,12 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.4.5",
     "@react-navigation/native": "^5.4.0",
+<<<<<<< HEAD
     "@valdio/react-native-scrollable-tabview": "^0.8.12",
     "expo": "^37.0.12",
+=======
+    "expo": "~37.0.3",
+>>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",

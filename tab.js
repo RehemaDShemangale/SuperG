@@ -10,6 +10,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Maskani from './maskani';
 import Taarifa from './taarifa';
 import Oda from './oda';
+<<<<<<< HEAD
 import Jisajiri from './jisajir';
 import Vyakula from './vyakula';
 
@@ -19,6 +20,12 @@ const MaskaniStack = createStackNavigator(
     //Defination of Navigaton from home screen
     Maskani: { screen: Maskani },
     Vyakula:  {screen: Vyakula}
+=======
+const MaskaniStack = createStackNavigator(
+  {
+    //Defination of Navigaton from home screen
+    Maskani: { screen: Maskani }
+>>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
   },
   {
     defaultNavigationOptions: {
@@ -32,13 +39,19 @@ const MaskaniStack = createStackNavigator(
     },
   }
 );
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
 const TaarifaStack = createStackNavigator(
   {
     //Defination of Navigaton from setting screen
     Taarifa: { screen: Taarifa},
+<<<<<<< HEAD
     Jisajiri: {screen:Jisajiri}
+=======
+>>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
   },
   {
     defaultNavigationOptions: {
@@ -70,7 +83,10 @@ const OdaStack = createStackNavigator(
     }
   );
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
 const App = createBottomTabNavigator(
   {
     Maskani: { screen: MaskaniStack,
@@ -88,9 +104,12 @@ const App = createBottomTabNavigator(
             title: 'Oda zako',
         } 
         },
+<<<<<<< HEAD
         
 
 
+=======
+>>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

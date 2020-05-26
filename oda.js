@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+<<<<<<< HEAD
 import { Text, View,  Image, TextInput, ImageBackground,FlatList} from 'react-native';
 import {  AntDesign, MaterialCommunityIcons} from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -19,10 +20,16 @@ let live=[
   {id:5,name:"Palmix",name1:"Jumla 900tshs  1kg",name2:"rejareja 5030tshs  1kg",bg:bgu4},
 
 ]
+=======
+import { FlatList, Text, View, ImageBackground, TextInput,Image, TabBarIOS } from 'react-native';
+import {  EvilIcons, SimpleLineIcons,} from '@expo/vector-icons';
+
+>>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
 
 export default class Maskani extends Component {
   static navigationOptions={
     headerShown: false
+<<<<<<< HEAD
 }
   keyExtractor=(item)=>item.id.toString()
   renderItem=({item})=>{
@@ -105,6 +112,21 @@ export default class Maskani extends Component {
 
   );
 }
+=======
+   }
+
+  render(){
+    return (
+     
+      <View style={{backgroundColor:'red',height:220,width:165,paddingHorizontal:5,marginLeft:5,marginBottom:5}}>
+
+          </View>
+
+  
+      
+    );
+  }
+>>>>>>> d97e0e81ce9b71e63deae9fb4e68c92663b4f981
   }
 
  
