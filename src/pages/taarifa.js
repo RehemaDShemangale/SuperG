@@ -16,7 +16,7 @@ export default class Maskani extends Component {
       <View style={{flex:1,backgroundColor:'rgb(255, 255, 255)',paddingHorizontal:15}}>
            
            <View style={{alignSelf:'center',marginBottom:10,alignItems:'center',marginTop:30}}>
-             <Image source={require('./assets/gengeLogo.png')}
+             <Image source={require('../../assets/gengeLogo.png')}
                     style={{height:50,width:160}}
              />
              <Text style={{marginTop:5,fontWeight:'bold',fontSize:15}}>USHIRIKA(MEMMBERSHIP CARD)</Text>

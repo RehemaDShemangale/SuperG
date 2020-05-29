@@ -10,7 +10,7 @@ import VituPage from './v2vingine';
 
 
 
-let bgu=require('./assets/kabichi.png');
+let bgu=require('../../assets/kabichi.png');
 
 
 let live=[

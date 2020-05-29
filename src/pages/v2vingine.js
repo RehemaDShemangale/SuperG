@@ -4,7 +4,7 @@ import {  EvilIcons, SimpleLineIcons,AntDesign} from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-let bgu=require('./assets/palmOil.jpg');
+let bgu=require('../../assets/palmOil.jpg');
 
 
 let live=[
@@ -30,20 +30,33 @@ export default class Vitu extends Component {
     return (
 
 
-      <View
-               
-               style={{marginTop:90,alignSelf:'center',borderRadius:10,marginHorizontal:10,width:320,shadowColor: "red"
-               ,backgroundColor:'white',borderColor:'red',
-                shadowOffset: {
-                    width: 0,
-                    height: 5,
-                },
-                shadowOpacity: 0.34,
-                shadowRadius: 6.27,
-
-                elevation: 10,}}
+      <View  
+          style={{
+            marginTop:90,
+            alignSelf:'center',
+            borderRadius:10,
+            marginHorizontal:10,
+            width:320,
+            backgroundColor:'white',
+            borderColor:'#30C1DD',
+            borderWidth:0.5,
+            shadowColor:"#30C1DD",
+            shadowOffset: {
+                width: 0,
+                height: 4,
+            },
+            shadowOpacity: 0.4,
+            shadowRadius: 6.27,
+            elevation: 15,
+          }}
       >
-                <View style={{flexDirection:'row',backgroundColor:'rgb(255, 255, 255)',borderRadius:10,width:200,height:210,
+          <View 
+              style={{
+                flexDirection:'row',
+                backgroundColor:'rgb(255, 255, 255)',
+                borderRadius:10,
+                width:200,
+                height:210,
                 shadowColor: "#000",
                 shadowOffset: {
                     width: 0,
@@ -51,18 +64,38 @@ export default class Vitu extends Component {
                 },
                 shadowOpacity: 0.22,
                 shadowRadius: 2.22,
-
-                elevation: 3,position:'absolute', bottom:300,left:60,paddingTop:10,justifyContent:'center'}}>
-                <Image source={item.bg}
-                style={{width: 130, height: 190,overflow:'hidden',borderRadius:6}}
-                />
-                <AntDesign
-                    name="sharealt" color="rgba(255, 165, 2,10)"  size={15} 
-                />
-                </View>
+                elevation: 3,
+                position:'absolute', 
+                bottom:300,
+                left:60,
+                paddingTop:10,
+                justifyContent:'center'
+              }}
+           >
+              <Image source={item.bg}
+                 style={{
+                   width: 130, 
+                   height: 190,
+                   overflow:'hidden',
+                   borderRadius:6
+                  }}
+              />
+              <AntDesign
+                  name="sharealt" 
+                  color="rgba(255, 165, 2,10)" 
+                  size={15} 
+              />
+           </View>
                 <View style={{height:200}} />
 
-                <View style={{paddingHorizontal:5,backgroundColor:'rgb(0, 204, 0)'}}>
+                <View 
+                    style={{
+                      paddingHorizontal:5,
+                      backgroundColor:'rgb(0, 204, 0)',
+                      borderBottomLeftRadius:10,
+                      borderBottomRightRadius:10
+                    }}
+                >
                     
                 <Text style={{fontWeight:'bold',fontSize:20,marginTop:10,marginBottom:10}}>{item.name}</Text> 
                    <Text style={{fontWeight:'bold',fontSize:13,marginTop:15,marginBottom:15}}>{item.name0}</Text>
