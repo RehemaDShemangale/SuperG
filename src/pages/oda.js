@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Text, View,  Image, TextInput, ImageBackground,FlatList} from 'react-native';
+import { Text, View,  Image, TextInput, ImageBackground,FlatList,Dimensions} from 'react-native';
 import {  AntDesign, MaterialCommunityIcons} from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
@@ -31,127 +31,68 @@ export default class Maskani extends Component {
       <View 
           style={{
             backgroundColor:'white',
-            height:210,
+            height:Dimensions.get('screen').width/1.8,
             width:"49%",
             paddingHorizontal:5,
-            marginRight:4,
-            marginLeft:1,
-            marginBottom:5
+            paddingTop:5,
+            paddingBottom:5,
+            marginRight:5,
+            marginBottom:5,
+            justifyContent:'space-between'
           }}
       >
         <View 
             style={{
               flexDirection:'row',
               justifyContent:"space-between",
-              paddingTop:5
             }}
         >
           <AntDesign
             name="delete" 
             color="red"  
-            size={18} 
+            size={20} 
           />
-          <Image source={item.bg}
-              style={{
-                width: 130, 
-                height: 150,
-                marginHorizontal:8,
-                marginTop:10,
-                overflow:'hidden',
-                borderRadius:6,
-                alignSelf:'center'
-              }}
-          />
+          
           <AntDesign
             name="sharealt" 
             color="rgba(255, 165, 2,10)"  
-            size={15} 
+            size={20} 
           />
         </View>
-        <Text 
-            style={{
-              fontWeight:'bold',
-              fontSize:12
-            }}
-        >
-          {item.name} 
-        </Text>
-        <View style={{flexDirection:'row'}}>
-          <Text 
-              style={{
-                fontSize:10,
-                color:'rgba(255, 165, 2,10)'
-              }}
-          >
-            {item.name1} 
-          </Text>
-          <Text 
-            style={{
-              backgroundColor:'rgba(255, 165, 2,10)',
-              fontSize:8,
-              borderRadius:10,
-              marginBottom:5,
-              fontWeight:'bold',
-              color:'white',
-              marginLeft:19,
-              paddingHorizontal:4
-            }}
-          >
-            NUNUA
-          </Text>
-          <Text 
-              style={{
-                backgroundColor:'rgba(255, 165, 2,10)',
-                fontSize:8,
-                borderRadius:10,
-                marginBottom:5,
-                fontWeight:'bold',
-                color:'white',
-                marginHorizontal:5,
-                paddingHorizontal:2
-              }}
-            >
-              LIPIA ODA
-            </Text>
-      
-          </View>
-          <View style={{flexDirection:'row'}}>
-             <Text 
+
+        <View>
+          <Image source={item.bg}
                 style={{
-                  fontSize:10,
-                  color:'rgba(255, 165, 2,10)'
+                  width: 130, 
+                  height: 140,
+                  alignSelf:'center'
                 }}
-             >
-               {item.name2} 
-             </Text>
+          />
             <Text 
               style={{
-                backgroundColor:'rgba(255, 165, 2,10)',
-                fontSize:8,
-                borderRadius:10,
-                marginBottom:5,
                 fontWeight:'bold',
-                color:'white',
-                paddingHorizontal:4,
-                marginLeft:8
+                fontSize:RFPercentage(2.3)
               }}
-            >
-              NUNUA
-            </Text>
-            <Text 
-              style={{
-                backgroundColor:'rgba(255, 165, 2,10)',
-                fontSize:8,
-                borderRadius:10,
-                marginBottom:5,
-                fontWeight:'bold',
-                color:'white',
-                marginHorizontal:5,
-                paddingHorizontal:2
-              }}
-            >
-              LIPIA ODA
-            </Text>
+            >{item.name} </Text>
+          
+          
+            <View>
+                <Text 
+                    style={{
+                      fontSize:RFPercentage(1.7),
+                      color:'rgba(255, 165, 2,10)'
+                    }}
+                >{item.name1} </Text>
+                <Text 
+                  style={{
+                    fontSize:RFPercentage(1.7),
+                    color:'rgba(255, 165, 2,10)'
+                  }}
+                >
+                  {item.name2} 
+                </Text>
+
+            </View>
           
           </View>
       </View>
@@ -170,7 +111,7 @@ export default class Maskani extends Component {
             height:250,
             backgroundColor:'rgba(241, 242, 246,0.1)',
             flex:1,
-            paddingTop:100
+            paddingTop:20
           }}
       >
           <FlatList
@@ -180,8 +121,12 @@ export default class Maskani extends Component {
               numColumns={2}
               horizontal={false}
               showsVerticalScrollIndicator={false}
+              contentContainerStyle={{
+                paddingBottom:150
+              }}
               style={{
-                paddingHorizontal:2
+                paddingHorizontal:2,
+                paddingTop:100
               }}
           />
           <View 
@@ -189,8 +134,6 @@ export default class Maskani extends Component {
                 alignItems:'center',
                 justifyContent:'center',
                 backgroundColor:'white',
-                marginBottom:5,
-                marginTop:5,
                 shadowColor: "#000",
                 shadowOffset: {
                   width: 0,
@@ -201,17 +144,24 @@ export default class Maskani extends Component {
                 elevation: 13,
                 width:"80%",
                 flexDirection:'row',
-                alignSelf:'center'
+                alignSelf:'center',
+                position:'absolute',
+                bottom:10,
+                paddingTop:5
               }}
           >
             <Text 
-              style={{paddingBottom:3}}
+              style={{
+                fontSize:RFPercentage(2.2),
+                marginRight:5,
+                paddingBottom:5
+              }}
             >
-              Nenda kukalimisha malipo ya oda zako zote 
+              Nenda kakamilishe malipo ya oda zako zote 
             </Text>          
             <MaterialCommunityIcons
                 name="chevron-triple-right" 
-                size={15} 
+                size={20} 
                 color="black"  
             />
           </View>
