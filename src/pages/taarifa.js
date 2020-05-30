@@ -126,6 +126,7 @@ export default class Maskani extends Component {
                   color:'rgba(255, 153, 0,10)',
                   alignItems:'center',
                   justifyContent:'center',
+                  marginRight:10,
                   borderWidth:0.2,
                   borderRadius:5,
                   paddingHorizontal:10,

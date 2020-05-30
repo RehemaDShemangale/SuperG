@@ -7,6 +7,7 @@ import { Tab } from 'react-tabs';
 import VinywajiPage from './vinywaj';
 import GesiPage from './gesi';
 import VituPage from './v2vingine';
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 
 
@@ -65,26 +66,48 @@ export default class Maskani extends Component {
   render(){
 
   return (
-
-    <View  style={{flex:1,backgroundColor:'rgb(0, 204, 68)'}}>
-
-                <View style={{flexDirection:'row',alignItems:'center',marginTop:30}}>
-                <View style={{flexDirection:'row',backgroundColor:'#f1f2f6',justifyContent:'space-between',alignItems:'center'
-                ,width:200,borderRadius:5,marginHorizontal:20,paddingHorizontal:10}}>
-                <TextInput style={{}}
-                  placeholder="Tafuta Bidhaa"
-                  
-                />  
-                <EvilIcons
-                  name="search"
-                  color="#a4b0be" size={20}
-                />
-                </View>  
-                <SimpleLineIcons
-                  name="settings"
-                  color="#57606f" size={25} 
-                />
-                </View>    
+    <View  
+      style={{
+        flex:1,
+        backgroundColor:'rgb(0, 204, 68)'
+      }}
+    >
+        <View 
+           style={{
+             flexDirection:'row',
+             alignItems:'center',
+             marginTop:30,
+             height:100
+            }}
+        >
+          <View 
+            style={{
+              flexDirection:'row',
+              backgroundColor:'#f1f2f6',
+              justifyContent:'space-between',
+              alignItems:'center',
+              width:200,
+              borderRadius:5,
+              marginHorizontal:20,
+              paddingHorizontal:10
+            }}
+          >
+            <TextInput 
+              style={{}}
+              placeholder="Tafuta Bidhaa"
+              
+            />  
+            <EvilIcons
+              name="search"
+              color="#a4b0be" 
+              size={20}
+            />
+          </View>  
+          <SimpleLineIcons
+            name="settings"
+            color="#57606f" size={25} 
+          />
+        </View>    
 
           <ScrollableTabView
             style={{backgroundColor:'white'}}
