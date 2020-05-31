@@ -123,7 +123,7 @@ export default class Maskani extends Component {
               numColumns={2}
               horizontal={false}
               showsVerticalScrollIndicator={false}
-              contentContainerStyle={{paddingBottom:150}}
+              contentContainerStyle={{paddingBottom:120}}
               style={{
                 paddingHorizontal:2,
                 paddingTop:80
@@ -156,7 +156,7 @@ export default class Maskani extends Component {
                 marginRight:5
               }}
             >
-              Nenda kukalimisha malipo ya oda zako zote 
+              Nenda kakamilishe malipo ya oda zako zote 
             </Text>          
             <MaterialCommunityIcons
                 name="chevron-triple-right" 
