@@ -1,9 +1,9 @@
 import React, { Component} from 'react';
-import { FlatList, Text, View, ImageBackground, TextInput,Image, TabBarIOS } from 'react-native';
+import { FlatList, Text, View, ImageBackground, TextInput,Image, ScrollView,TabBarIOS,Dimensions } from 'react-native';
 import {  EvilIcons, SimpleLineIcons,} from '@expo/vector-icons';
 import Jisajiri from './jisajir';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 export default class Maskani extends Component {
   static navigationOptions={
@@ -107,7 +107,7 @@ export default class Maskani extends Component {
                   borderWidth:0.2,
                   borderRadius:5,
                   paddingHorizontal:5,
-                  width:47,
+                  
                   backgroundColor:'white',  
                   shadowColor: "#000",
                   shadowOffset: 
@@ -145,9 +145,7 @@ export default class Maskani extends Component {
               </View>
               </View>
       </View>
-
-  
-      
+    
     );
   }
   }

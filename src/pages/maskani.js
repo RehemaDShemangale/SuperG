@@ -113,7 +113,9 @@ export default class Maskani extends Component {
 
       <ImageBackground 
           source={require('../../assets/Layer.png')}
-          style={{height:250,}}
+          style={{
+            height:250,
+          }}
       >
           <View 
              style={{
@@ -137,18 +139,23 @@ export default class Maskani extends Component {
               }}
             >
               <TextInput 
-                style={{width:"90%",fontSize:RFPercentage(2.2)}}
+                style={{
+                  width:"90%",
+                  fontSize:RFPercentage(2.2)
+                }}
                 placeholder="Tafuta Bidhaa"
                 
               />  
               <EvilIcons
                 name="search"
-                color="#a4b0be" size={25}
+                color="#a4b0be" 
+                size={25}
               />
             </View>  
             <SimpleLineIcons
               name="settings"
-              color="#57606f" size={30} 
+              color="#57606f" 
+              size={30} 
             />
           </View> 
 
@@ -208,7 +215,12 @@ export default class Maskani extends Component {
                 fontSize:RFPercentage(2.4),
               }}
             >Supper Genge  
-              <Text style={{fontSize:RFPercentage(2.1)}}> online shop</Text>
+              <Text 
+                style={{
+                  fontSize:RFPercentage(2.1)
+                }}
+              > online shop
+              </Text>
             </Text>
             <Text 
               style={{
@@ -231,7 +243,13 @@ export default class Maskani extends Component {
               alignItems:'center'
             }}
           >Wauzaji na wasambazaji wa jumla na rejareja 
-          <Text style={{color:'rgb(230, 149, 0)',fontSize:RFPercentage(2.1)}}> - DSM</Text>
+          <Text 
+            style={{
+              color:'rgb(230, 149, 0)',
+              fontSize:RFPercentage(2.1)
+            }}
+          > - DSM
+          </Text>
           </Text>
 
         </View>
@@ -255,7 +273,13 @@ export default class Maskani extends Component {
           >Menu
           </Text>
           
-          <Text style={{marginRight:15,fontSize:RFPercentage(2.5)}}>Msaada</Text>
+          <Text 
+            style={{
+              marginRight:15,
+              fontSize:RFPercentage(2.5)
+            }}
+          >Msaada
+          </Text>
 
         </View>
 

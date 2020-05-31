@@ -3,7 +3,7 @@ import { Text, View,  Image, TextInput, ImageBackground,FlatList} from 'react-na
 import { EvilIcons,SimpleLineIcons, AntDesign} from '@expo/vector-icons';
 import {ScrollableTabView,DefaultTabBar} from '@valdio/react-native-scrollable-tabview';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
-import { Tab } from 'react-tabs';
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import VinywajiPage from './vinywaj';
 import GesiPage from './gesi';
 import VituPage from './v2vingine';
@@ -45,7 +45,8 @@ export default class Maskani extends Component {
       >
         <Image source={item.bg}
         style={{
-          width: 130, height: 150,
+          width: 130, 
+          height: 150,
           marginHorizontal:8,
           marginTop:10,
           overflow:'hidden',
@@ -68,7 +69,7 @@ export default class Maskani extends Component {
         <Text 
           style={{
             fontWeight:'bold',
-            fontSize:12
+            fontSize:RFPercentage(2.1),
           }}
         >
           {item.name} 
@@ -76,7 +77,7 @@ export default class Maskani extends Component {
 
         <Text 
           style={{
-            fontSize:11,
+            fontSize:RFPercentage(1.6),
             marginTop:10
           }}
         >
@@ -85,7 +86,7 @@ export default class Maskani extends Component {
 
         <Text 
           style={{
-            fontSize:10,
+            fontSize:RFPercentage(1.5),
             color:'rgba(255, 165, 2,10)',
             marginTop:20
           }}
@@ -94,7 +95,7 @@ export default class Maskani extends Component {
 
         <Text 
           style={{
-            fontSize:10,
+            fontSize:RFPercentage(1.5),
             color:'rgba(255, 165, 2,10)',
             marginTop:5
           }}
@@ -111,7 +112,7 @@ export default class Maskani extends Component {
        <Text 
         style={{
           backgroundColor:'rgba(255, 165, 2,10)',
-          fontSize:12,
+          fontSize:RFPercentage(2.1),
           fontWeight:'bold',
           borderRadius:10,
           color:'white',
@@ -122,7 +123,7 @@ export default class Maskani extends Component {
        <Text 
         style={{
           backgroundColor:'rgba(255, 165, 2,10)',
-          fontSize:12,
+          fontSize:RFPercentage(2.1),
           fontWeight:'bold',
           borderRadius:10,
           color:'white',
@@ -149,12 +150,34 @@ export default class Maskani extends Component {
 
   return (
 
-    <View  style={{flex:1,backgroundColor:'rgb(0, 204, 68)'}}>
+    <View  
+      style={{
+        flex:1,
+        backgroundColor:'rgb(0, 204, 68)'
+      }}
+    >
 
-                <View style={{flexDirection:'row',alignItems:'center',marginTop:30}}>
-                <View style={{flexDirection:'row',backgroundColor:'#f1f2f6',justifyContent:'space-between',alignItems:'center'
-                ,width:200,borderRadius:5,marginHorizontal:20,paddingHorizontal:10}}>
-                <TextInput style={{}}
+                <View 
+                  style={{
+                    flexDirection:'row',
+                    alignItems:'center',
+                    marginTop:30
+                  }}
+                >
+                <View 
+                  style={{
+                    flexDirection:'row',
+                    backgroundColor:'#f1f2f6',
+                    justifyContent:'space-between',
+                    alignItems:'center',
+                    width:200,
+                    borderRadius:5,
+                    marginHorizontal:20,
+                    paddingHorizontal:10
+                  }}
+                >
+                <TextInput 
+                  style={{}}
                   placeholder="Tafuta Bidhaa"
                   
                 />  
@@ -170,7 +193,10 @@ export default class Maskani extends Component {
                 </View>    
 
           <ScrollableTabView
-            style={{backgroundColor:'white',marginTop:10}}
+            style={{
+              backgroundColor:'white',
+              marginTop:10
+            }}
             showsHorizontalScrollIndicator={false}
            // renderTabBar={() => <DefaultTabBar />}
             //ref={(tabView) => { this.tabView = tabView; }}
