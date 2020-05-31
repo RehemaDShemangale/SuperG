@@ -58,8 +58,8 @@ export default class Maskani extends Component {
           
             <Image source={item.bg}
               style={{
-                width: 130, 
-                height: 140,
+                width:Dimensions.get('screen').width/3.2, 
+                height:Dimensions.get('screen').width/3,
                 alignSelf:'center'
               }}
             />

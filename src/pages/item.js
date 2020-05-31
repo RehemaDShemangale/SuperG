@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Text, View,  Image, TextInput, ImageBackground,FlatList} from 'react-native';
+import { Text, View,  Image, TextInput, ImageBackground,FlatList, Dimensions} from 'react-native';
 import { EvilIcons,SimpleLineIcons, AntDesign} from '@expo/vector-icons';
 import {ScrollableTabView,DefaultTabBar} from '@valdio/react-native-scrollable-tabview';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
@@ -33,35 +33,41 @@ export default class Maskani extends Component {
       <View 
         style={{
           backgroundColor:'white',
-          borderBottomWidth:0.2
+          borderBottomWidth:0.2,
+          width:Dimensions.get('screen').width,
+          flexDirection:'row'
         }}
       >
 
       <View 
         style={{
-          flexDirection:'row',
-          paddingTop:5
+          //flexDirection:'row',
+          paddingTop:10
         }}
       >
+        <AntDesign
+          name="sharealt" 
+          color="rgba(255, 165, 2,10)"  
+          size={20} 
+          style={{
+            alignSelf:'flex-end'
+          }}
+       />
         <Image source={item.bg}
         style={{
-          width: 130, 
-          height: 150,
+          width:Dimensions.get('screen').width/3.2, 
+          height:Dimensions.get('screen').width/3,
           marginHorizontal:8,
-          marginTop:10,
           overflow:'hidden',
           borderRadius:6,
           alignSelf:'center'
         }}
         />
-       <AntDesign
-          name="sharealt" 
-          color="rgba(255, 165, 2,10)"  
-          size={15} 
-       />
+       
+       </View>
        <View 
           style={{
-            marginTop:10,
+            paddingTop:10,
             paddingHorizontal:10
           }}
        >
@@ -106,7 +112,8 @@ export default class Maskani extends Component {
         style={{
           flexDirection:'row',
           marginTop:10,
-          alignSelf:'flex-end'
+          alignSelf:'flex-end',
+          alignItems:'center'
         }}
       >
        <Text 
@@ -116,7 +123,7 @@ export default class Maskani extends Component {
           fontWeight:'bold',
           borderRadius:10,
           color:'white',
-          paddingHorizontal:4
+          paddingHorizontal:5
         }}
         >NUNUA
         </Text>
@@ -128,7 +135,7 @@ export default class Maskani extends Component {
           borderRadius:10,
           color:'white',
           marginHorizontal:5,
-          paddingHorizontal:4
+          paddingHorizontal:5
         }}
         >WEKA ODA
         </Text>
@@ -136,9 +143,6 @@ export default class Maskani extends Component {
 
 
        </View>
-
-       </View>
-
       </View>
      
  
@@ -157,67 +161,67 @@ export default class Maskani extends Component {
       }}
     >
 
-                <View 
-                  style={{
-                    flexDirection:'row',
-                    alignItems:'center',
-                    marginTop:30
-                  }}
-                >
-                <View 
-                  style={{
-                    flexDirection:'row',
-                    backgroundColor:'#f1f2f6',
-                    justifyContent:'space-between',
-                    alignItems:'center',
-                    width:200,
-                    borderRadius:5,
-                    marginHorizontal:20,
-                    paddingHorizontal:10
-                  }}
-                >
-                <TextInput 
-                  style={{}}
-                  placeholder="Tafuta Bidhaa"
-                  
-                />  
-                <EvilIcons
-                  name="search"
-                  color="#a4b0be" size={20}
-                />
-                </View>  
-                <SimpleLineIcons
-                  name="settings"
-                  color="#57606f" size={25} 
-                />
-                </View>    
+      <View 
+        style={{
+          flexDirection:'row',
+          alignItems:'center',
+          marginTop:50
+        }}
+      >
+        <View 
+          style={{
+            flexDirection:'row',
+            backgroundColor:'#f1f2f6',
+            justifyContent:'space-between',
+            alignItems:'center',
+            width:200,
+            borderRadius:5,
+            marginHorizontal:20,
+            paddingHorizontal:10
+          }}
+        >
+          <TextInput 
+            style={{}}
+            placeholder="Tafuta Bidhaa"
+            
+          />  
+          <EvilIcons
+            name="search"
+            color="#a4b0be" size={20}
+          />
+        </View>  
+        <SimpleLineIcons
+          name="settings"
+          color="#57606f" size={25} 
+        />
+      </View>    
 
-          <ScrollableTabView
-            style={{
-              backgroundColor:'white',
-              marginTop:10
-            }}
-            showsHorizontalScrollIndicator={false}
-           // renderTabBar={() => <DefaultTabBar />}
-            //ref={(tabView) => { this.tabView = tabView; }}
-          >
-              
-              <FlatList
-                      tabLabel='Vyakula'
-                      data={live}
-                      keyExtractor={this.keyExtractor}
-                      renderItem={this.renderItem}
-                      horizontal={false}
-                      showsVerticalScrollIndicator={false}
-                      style={{
-                        paddingHorizontal:2
-                      }}
-                  />
-              <VinywajiPage tabLabel='Vinywaji' />
-              <GesiPage tabLabel='Gesi' />
-              <VituPage tabLabel='Vitu vingine' />
+      <ScrollableTabView
+        style={{
+          backgroundColor:'white',
+          marginTop:15
+        }}
+        showsHorizontalScrollIndicator={false}
+        // renderTabBar={() => <DefaultTabBar />}
+        //ref={(tabView) => { this.tabView = tabView; }}
+      >
+          
+          <FlatList
+                  tabLabel='Vyakula'
+                  data={live}
+                  keyExtractor={this.keyExtractor}
+                  renderItem={this.renderItem}
+                  horizontal={false}
+                  showsVerticalScrollIndicator={false}
+                  style={{
+                    paddingHorizontal:2
+                  }}
+              />
+          <VinywajiPage tabLabel='Vinywaji' />
+          <GesiPage tabLabel='Gesi' />
+          <VituPage tabLabel='Vitu vingine' />
 
-          </ScrollableTabView> 
+      </ScrollableTabView> 
 
 
    

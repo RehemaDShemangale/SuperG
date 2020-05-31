@@ -1,8 +1,9 @@
 import React, { Component} from 'react';
-import { FlatList, Text, View, ImageBackground, TextInput,Image, TabBarIOS } from 'react-native';
+import { FlatList, Text, View, ImageBackground, TextInput,Image, TabBarIOS, Dimensions } from 'react-native';
 import {  EvilIcons, SimpleLineIcons,AntDesign} from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 let bgu=require('../../assets/palmOil.jpg');
 
@@ -36,7 +37,7 @@ export default class Vitu extends Component {
             alignSelf:'center',
             borderRadius:10,
             marginHorizontal:10,
-            width:320,
+            width:Dimensions.get('screen').width/1.2,
             backgroundColor:'white',
             borderColor:'#30C1DD',
             borderWidth:0.5,
@@ -52,11 +53,8 @@ export default class Vitu extends Component {
       >
           <View 
               style={{
-                flexDirection:'row',
                 backgroundColor:'rgb(255, 255, 255)',
                 borderRadius:10,
-                width:200,
-                height:210,
                 shadowColor: "#000",
                 shadowOffset: {
                     width: 0,
@@ -66,16 +64,19 @@ export default class Vitu extends Component {
                 shadowRadius: 2.22,
                 elevation: 3,
                 position:'absolute', 
-                bottom:300,
-                left:60,
-                paddingTop:10,
-                justifyContent:'center'
+                top:-70,
+                alignSelf:'center',
+                //left:'21%',
+                padding:20,
+                justifyContent:'center',
+                alignItems:'center'
               }}
            >
+             
               <Image source={item.bg}
                  style={{
-                   width: 130, 
-                   height: 190,
+                    width:Dimensions.get('screen').width/2.8, 
+                    height:Dimensions.get('screen').width/2.3,
                    overflow:'hidden',
                    borderRadius:6
                   }}
@@ -83,10 +84,16 @@ export default class Vitu extends Component {
               <AntDesign
                   name="sharealt" 
                   color="rgba(255, 165, 2,10)" 
-                  size={15} 
+                  size={20} 
+                  style={{
+                    position:'absolute',
+                    top:10,
+                    right:10
+                  }}
               />
+              
            </View>
-                <View style={{height:200}} />
+                <View style={{height:Dimensions.get('screen').width/2}} />
 
                 <View 
                     style={{
@@ -100,7 +107,7 @@ export default class Vitu extends Component {
                 <Text 
                     style={{
                       fontWeight:'bold',
-                      fontSize:20,
+                      fontSize:RFPercentage(2.5),
                       marginTop:10,
                       marginBottom:10
                     }}
@@ -109,7 +116,7 @@ export default class Vitu extends Component {
                    <Text 
                       style={{
                         fontWeight:'bold',
-                        fontSize:13,
+                        fontSize:RFPercentage(2),
                         marginTop:15,
                         marginBottom:15
                       }}
@@ -119,7 +126,8 @@ export default class Vitu extends Component {
                       style={{
                         fontWeight:'500',
                         marginTop:15,
-                        color:'white'
+                        color:'white',
+                        fontSize:RFPercentage(2)
                       }}
                     >{item.name1}
                     </Text>
@@ -127,14 +135,15 @@ export default class Vitu extends Component {
                       style={{
                         fontWeight:'500',
                         marginTop:5,
-                        color:'white'
+                        color:'white',
+                        fontSize:RFPercentage(2)
                       }}
                    >{item.name2}
                    </Text>
                 <View 
                   style={{
                     flexDirection:'row',
-                    marginTop:25,
+                    marginTop:20,
                     paddingBottom:10,
                     alignSelf:'flex-end'
                   }}
@@ -142,23 +151,23 @@ export default class Vitu extends Component {
                 <Text 
                   style={{
                     backgroundColor:'rgba(255, 165, 2,10)',
-                    fontSize:12,
+                    fontSize:RFPercentage(2.3),
                     fontWeight:'bold',
                     borderRadius:10,
                     color:'white',
-                    paddingHorizontal:4
+                    paddingHorizontal:5
                   }}
                 >NUNUA
                 </Text>
                 <Text 
                   style={{
                     backgroundColor:'rgba(255, 165, 2,10)',
-                    fontSize:12,
+                    fontSize:RFPercentage(2.3),
                     fontWeight:'bold',
                     borderRadius:10,
                     color:'white',
                     marginHorizontal:5,
-                    paddingHorizontal:4
+                    paddingHorizontal:5
                   }}
                 >WEKA ODA
                 </Text>
