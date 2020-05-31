@@ -97,15 +97,71 @@ export default class Vitu extends Component {
                     }}
                 >
                     
-                <Text style={{fontWeight:'bold',fontSize:20,marginTop:10,marginBottom:10}}>{item.name}</Text> 
-                   <Text style={{fontWeight:'bold',fontSize:13,marginTop:15,marginBottom:15}}>{item.name0}</Text>
-                   <Text style={{fontWeight:'500',marginTop:15,color:'white'}}>{item.name1}</Text>
-                   <Text style={{fontWeight:'500',marginTop:5,color:'white'}}>{item.name2}</Text>
-                <View style={{flexDirection:'row',marginTop:25,paddingBottom:10,alignSelf:'flex-end'}}>
-                <Text style={{backgroundColor:'rgba(255, 165, 2,10)',fontSize:12,fontWeight:'bold',borderRadius:10,color:'white'
-                ,paddingHorizontal:4}}>NUNUA</Text>
-                <Text style={{backgroundColor:'rgba(255, 165, 2,10)',fontSize:12,fontWeight:'bold',borderRadius:10,color:'white'
-                ,marginHorizontal:5,paddingHorizontal:4}}>WEKA ODA</Text>
+                <Text 
+                    style={{
+                      fontWeight:'bold',
+                      fontSize:20,
+                      marginTop:10,
+                      marginBottom:10
+                    }}
+                >{item.name}
+                </Text> 
+                   <Text 
+                      style={{
+                        fontWeight:'bold',
+                        fontSize:13,
+                        marginTop:15,
+                        marginBottom:15
+                      }}
+                    >{item.name0}
+                    </Text>
+                   <Text 
+                      style={{
+                        fontWeight:'500',
+                        marginTop:15,
+                        color:'white'
+                      }}
+                    >{item.name1}
+                    </Text>
+                   <Text 
+                      style={{
+                        fontWeight:'500',
+                        marginTop:5,
+                        color:'white'
+                      }}
+                   >{item.name2}
+                   </Text>
+                <View 
+                  style={{
+                    flexDirection:'row',
+                    marginTop:25,
+                    paddingBottom:10,
+                    alignSelf:'flex-end'
+                  }}
+                >
+                <Text 
+                  style={{
+                    backgroundColor:'rgba(255, 165, 2,10)',
+                    fontSize:12,
+                    fontWeight:'bold',
+                    borderRadius:10,
+                    color:'white',
+                    paddingHorizontal:4
+                  }}
+                >NUNUA
+                </Text>
+                <Text 
+                  style={{
+                    backgroundColor:'rgba(255, 165, 2,10)',
+                    fontSize:12,
+                    fontWeight:'bold',
+                    borderRadius:10,
+                    color:'white',
+                    marginHorizontal:5,
+                    paddingHorizontal:4
+                  }}
+                >WEKA ODA
+                </Text>
                 </View>
                 </View>
 

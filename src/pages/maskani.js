@@ -103,7 +103,12 @@ export default class Maskani extends Component {
     
   return (
 
-    <View  style={{flex:1,backgroundColor:'#f1f2f0'}}>
+    <View  
+      style={{
+        flex:1,
+        backgroundColor:'#f1f2f0'
+      }}
+    >
 
 
       <ImageBackground 

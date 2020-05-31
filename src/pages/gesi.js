@@ -13,7 +13,12 @@ export default class Gesi extends Component {
   render(){
     return (
      
-      <View style={{flex:1,backgroundColor:'pink',paddingHorizontal:15}}>
+      <View 
+        style={{
+          flex:1,backgroundColor:'pink',
+          paddingHorizontal:15
+        }}
+      >
            
 
       </View>

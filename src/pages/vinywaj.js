@@ -13,7 +13,13 @@ export default class Vinywaj extends Component {
   render(){
     return (
      
-      <View style={{flex:1,backgroundColor:'red',paddingHorizontal:15}}>
+      <View 
+        style={{
+          flex:1,
+          backgroundColor:'red',
+          paddingHorizontal:15
+        }}
+      >
            
 
       </View>

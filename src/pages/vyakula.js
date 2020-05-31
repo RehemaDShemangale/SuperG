@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
-import TabT from './TopTab';
-import Item from './item'
+import Item from './item';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 

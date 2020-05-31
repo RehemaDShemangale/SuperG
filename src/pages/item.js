@@ -30,24 +30,107 @@ export default class Maskani extends Component {
   renderItem=({item})=>{
     return (
 
-      <View style={{backgroundColor:'white',borderBottomWidth:0.2}}>
+      <View 
+        style={{
+          backgroundColor:'white',
+          borderBottomWidth:0.2
+        }}
+      >
 
-      <View style={{flexDirection:'row',paddingTop:5}}>
-      <Image source={item.bg}
-      style={{width: 130, height: 150,marginHorizontal:8,marginTop:10,overflow:'hidden',borderRadius:6,alignSelf:'center'}}
-       />
+      <View 
+        style={{
+          flexDirection:'row',
+          paddingTop:5
+        }}
+      >
+        <Image source={item.bg}
+        style={{
+          width: 130, height: 150,
+          marginHorizontal:8,
+          marginTop:10,
+          overflow:'hidden',
+          borderRadius:6,
+          alignSelf:'center'
+        }}
+        />
        <AntDesign
-        name="sharealt" color="rgba(255, 165, 2,10)"  size={15} 
+          name="sharealt" 
+          color="rgba(255, 165, 2,10)"  
+          size={15} 
        />
-       <View style={{marginTop:10,paddingHorizontal:10}}>
-      <Text style={{fontWeight:'bold',fontSize:12}}>{item.name} </Text>
-      <Text style={{fontSize:11,marginTop:10}}>{item.name0} </Text>
-      <Text style={{fontSize:10,color:'rgba(255, 165, 2,10)',marginTop:20}}>{item.name1} </Text>
-      <Text style={{fontSize:10,color:'rgba(255, 165, 2,10)',marginTop:5}}>{item.name2} </Text>
+       <View 
+          style={{
+            marginTop:10,
+            paddingHorizontal:10
+          }}
+       >
 
-      <View style={{flexDirection:'row',marginTop:10,alignSelf:'flex-end'}}>
-       <Text style={{backgroundColor:'rgba(255, 165, 2,10)',fontSize:12,fontWeight:'bold',borderRadius:10,color:'white',paddingHorizontal:4}}>NUNUA</Text>
-       <Text style={{backgroundColor:'rgba(255, 165, 2,10)',fontSize:12,fontWeight:'bold',borderRadius:10,color:'white',marginHorizontal:5,paddingHorizontal:4}}>WEKA ODA</Text>
+        <Text 
+          style={{
+            fontWeight:'bold',
+            fontSize:12
+          }}
+        >
+          {item.name} 
+        </Text>
+
+        <Text 
+          style={{
+            fontSize:11,
+            marginTop:10
+          }}
+        >
+          {item.name0} 
+        </Text>
+
+        <Text 
+          style={{
+            fontSize:10,
+            color:'rgba(255, 165, 2,10)',
+            marginTop:20
+          }}
+        >{item.name1} 
+        </Text>
+
+        <Text 
+          style={{
+            fontSize:10,
+            color:'rgba(255, 165, 2,10)',
+            marginTop:5
+          }}
+        >{item.name2} 
+        </Text>
+
+      <View 
+        style={{
+          flexDirection:'row',
+          marginTop:10,
+          alignSelf:'flex-end'
+        }}
+      >
+       <Text 
+        style={{
+          backgroundColor:'rgba(255, 165, 2,10)',
+          fontSize:12,
+          fontWeight:'bold',
+          borderRadius:10,
+          color:'white',
+          paddingHorizontal:4
+        }}
+        >NUNUA
+        </Text>
+       <Text 
+        style={{
+          backgroundColor:'rgba(255, 165, 2,10)',
+          fontSize:12,
+          fontWeight:'bold',
+          borderRadius:10,
+          color:'white',
+          marginHorizontal:5,
+          paddingHorizontal:4
+        }}
+        >WEKA ODA
+        </Text>
        </View>
 
 
@@ -87,7 +170,7 @@ export default class Maskani extends Component {
                 </View>    
 
           <ScrollableTabView
-            style={{backgroundColor:'white'}}
+            style={{backgroundColor:'white',marginTop:10}}
             showsHorizontalScrollIndicator={false}
            // renderTabBar={() => <DefaultTabBar />}
             //ref={(tabView) => { this.tabView = tabView; }}
