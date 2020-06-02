@@ -1,104 +1,222 @@
 import React, { Component} from 'react';
-import { Text, View,  Image, TextInput, TouchableWithoutFeedback,ImageBackground,FlatList,Dimensions} from 'react-native';
+import { Text, View,Share,Image, TextInput, TouchableWithoutFeedback,ImageBackground,FlatList,Dimensions, Modal} from 'react-native';
 import { EvilIcons,SimpleLineIcons, AntDesign} from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-
-let bgu=require('../../assets/kabichi.png');
-let bgu1=require('../../assets/nyama.png');
-let bgu2=require('../../assets/bili.jpg');
-let bgu3=require('../../assets/mchele.png');
-let bgu4=require('../../assets/palmOil.jpg');
-let bgu5=require('../../assets/oil.jpg');
+import { connect } from "react-redux";
+import * as actions from '../../actions';
 
 
-let live=[
-  {id:1,name:"Kabichi (Cabeg)",name1:"Jumla 500tshs  1kg",name2:"rejareja 5100tshs  1kg",bg:bgu},
-  {id:2,name:"Nyama ya ng'ombe (meat)",name1:"Jumla 600tshs  1kg",name2:"rejareja 5002tshs  1kg",bg:bgu1},
-  {id:3,name:"Bilinganya (Eggplant)",name1:"Jumla 700tshs  1kg",name2:"rejareja 5020tshs  1kg",bg:bgu2},
-  {id:4,name:"Mchele (Rice)",name1:"Jumla 800tshs  1kg",name2:"rejareja 5030tshs  1kg",bg:bgu3},
-  {id:5,name:"Palmix",name1:"Jumla 900tshs  1kg",name2:"rejareja 5030tshs  1kg",bg:bgu4},
-  {id:6,name:"Blue Magic Oil",name1:"Jumla 980tshs  1kg",name2:"rejareja 5050tshs  1kg",bg:bgu5},
-]
-
-export default class Maskani extends Component {
+class Maskani extends Component {
   static navigationOptions={
     headerShown: false
 }
+
+state={
+  more:false,
+  img:'',
+  prod:"",
+  jumla:'',
+  reja:'',
+  id:''
+}
+
   keyExtractor=(item)=>item.id.toString()
   renderItem=({item})=>{
-    return (
-      <TouchableWithoutFeedback 
-          onPress={()=>this.props.navigation.navigate ("Vyakula")}
-      >
-        <View 
-          style={{
-            backgroundColor:'white',
-            height:Dimensions.get('screen').width/1.8,
-            width:"49%",
-            paddingHorizontal:5,
-            paddingBottom:5,
-            marginLeft:5,
-            marginBottom:5,
-            justifyContent:'flex-end'
-          }}
-        >
-            <AntDesign
-              name="sharealt" 
-              color="rgba(255, 165, 2,10)"  
-              size={20} 
+    let cart1=this.props.app.cart;
+    let cart2=Object.keys(cart1)
+    let cart=cart2.findIndex(obj =>obj ==item.id);
+    console.log("cart",cart);
+    if(cart ==-1){
+        return (
+          <TouchableWithoutFeedback 
+              //onPress={()=>this.props.navigation.navigate ("Vyakula")}
+              onPress={()=>this.setState({id:item.id,img:item.bg,prod:item.name,jumla:item.jumla,reja:item.reja,more:true})}
+          >
+            <View 
               style={{
-              position:'absolute',
-              right:5,
-              top:5
+                backgroundColor:'white',
+                height:Dimensions.get('screen').width/1.8,
+                width:"49%",
+                paddingHorizontal:5,
+                paddingBottom:5,
+                marginLeft:5,
+                marginBottom:5,
+                justifyContent:'flex-end'
+              }}
+            >
+                <TouchableWithoutFeedback
+                  onPress={this.openShareDialogAsync}
+                >
+                  <AntDesign
+                    name="sharealt" 
+                    color="rgba(255, 165, 2,10)"  
+                    size={20} 
+                    style={{
+                    position:'absolute',
+                    right:5,
+                    top:5
 
-              }}
-            />
-          
-            <Image source={item.bg}
-              style={{
-                width:Dimensions.get('screen').width/3.2, 
-                height:Dimensions.get('screen').width/3,
-                alignSelf:'center'
-              }}
-            />
+                    }}
+                  />
+                </TouchableWithoutFeedback>
+                <Image source={item.bg}
+                  style={{
+                    width:Dimensions.get('screen').width/3.2, 
+                    height:Dimensions.get('screen').width/3,
+                    alignSelf:'center'
+                  }}
+                />
+                
             
-        
-          <Text 
-            style={{
-              fontWeight:'bold',
-              fontSize:RFPercentage(2.3)
-            }}
-          >{item.name} </Text>
-        
-        
-          <View>
               <Text 
+                style={{
+                  fontWeight:'bold',
+                  fontSize:RFPercentage(2.3)
+                }}
+              >{item.name} </Text>
+            
+            
+              <View>
+                  <Text 
+                      style={{
+                        fontSize:RFPercentage(1.7),
+                        color:'rgba(255, 165, 2,10)'
+                      }}
+                  >Jumla {item.jumla}tshs 1kg  </Text>
+                  <Text 
+                    style={{
+                      fontSize:RFPercentage(1.7),
+                      color:'rgba(255, 165, 2,10)'
+                    }}
+                  >
+                   rejareja {item.reja}tshs 1kg 
+                  </Text>
+
+              </View>
+              
+              
+          </View>
+        </TouchableWithoutFeedback>
+    
+        );
+   }
+   else{
+    return (
+          <View 
+            style={{
+              backgroundColor:'white',
+              height:Dimensions.get('screen').width/1.8,
+              width:"49%",
+              paddingHorizontal:5,
+              paddingBottom:5,
+              marginLeft:5,
+              marginBottom:5,
+              justifyContent:'flex-end'
+            }}
+          >
+              <AntDesign
+                name="shoppingcart" 
+                color="rgba(255, 165, 2,10)"  
+                size={23} 
+                style={{
+                position:'absolute',
+                left:5,
+                top:5
+
+                }}
+              />
+              <TouchableWithoutFeedback
+                onPress={this.openShareDialogAsync}
+              >
+                <AntDesign
+                  name="sharealt" 
+                  color="rgba(255, 165, 2,10)"  
+                  size={20} 
+                  style={{
+                  position:'absolute',
+                  right:5,
+                  top:5
+
+                  }}
+                />
+              </TouchableWithoutFeedback>
+              <Image source={item.bg}
+                style={{
+                  width:Dimensions.get('screen').width/3.2, 
+                  height:Dimensions.get('screen').width/3,
+                  alignSelf:'center'
+                }}
+              />
+              
+          
+            <Text 
+              style={{
+                fontWeight:'bold',
+                fontSize:RFPercentage(2.3)
+              }}
+            >{item.name} </Text>
+          
+          
+            <View>
+                <Text 
+                    style={{
+                      fontSize:RFPercentage(1.7),
+                      color:'rgba(255, 165, 2,10)'
+                    }}
+                >{item.name1} </Text>
+                <Text 
                   style={{
                     fontSize:RFPercentage(1.7),
                     color:'rgba(255, 165, 2,10)'
                   }}
-              >{item.name1} </Text>
-              <Text 
-                style={{
-                  fontSize:RFPercentage(1.7),
-                  color:'rgba(255, 165, 2,10)'
-                }}
-              >
-                {item.name2} 
-              </Text>
+                >
+                  {item.name2} 
+                </Text>
 
-          </View>
-          
-          
-      </View>
-    </TouchableWithoutFeedback>
- 
-    );
+            </View>
+            
+            
+        </View>
+
+      );
+   }
   }
 
+  cart=(item)=>{
+    let data={
+      img:this.state.img,
+      name:this.state.prod,
+      type:item =="jumla"?this.state.jumla:this.state.reja,
+      id:this.state.id
+    }
+    this.setState({more:false})
+    this.props.updateCart(data)
+  }
 
+  openShareDialogAsync = async () => {
+   // Share.open(options);
+   try {
+    const result = await Share.share({
+      message:
+        'Download genge',
+    });
+    if (result.action === Share.sharedAction) {
+      if (result.activityType) {
+        // shared with activity type of result.activityType
+      } else {
+        // shared
+      }
+    } else if (result.action === Share.dismissedAction) {
+      // dismissed
+    }
+  } catch (error) {
+    alert(error.message);
+  }
+  };
+
+  
   render(){
     
   return (
@@ -109,6 +227,114 @@ export default class Maskani extends Component {
         backgroundColor:'#f1f2f0'
       }}
     >
+      <Modal
+          visible={this.state.more}
+          transparent={true}
+      >
+          <TouchableWithoutFeedback
+            onPress={()=>this.setState({more:false})}
+        >
+          <View
+              style={{
+                flex:1,
+                backgroundColor:'rgba(0,0,0,0.5)',
+                alignItems:'center',
+                justifyContent:'center'
+              }}
+          >
+              <View
+                  style={{
+                    width:'80%',
+                    height:'55%',
+                    backgroundColor:'white',
+                    borderRadius:8,
+                    padding:10,
+                    alignItems:'center',
+                    justifyContent:'center'
+                  }}
+              >
+                  <Image source={this.state.img}
+                    style={{
+                      width:Dimensions.get('screen').width/2.5, 
+                      height:Dimensions.get('screen').width/2.5,
+                      alignSelf:'center'
+                    }}
+                  />
+                  
+              
+                <Text 
+                  style={{
+                    fontWeight:'bold',
+                    fontSize:RFPercentage(2.7)
+                  }}
+                >{this.state.prod} </Text>
+              
+              
+                <View>
+                    <Text 
+                        style={{
+                          fontSize:RFPercentage(2.2),
+                          color:'rgba(255, 165, 2,10)'
+                        }}
+                    >{this.state.jumla} </Text>
+                    <Text 
+                      style={{
+                        fontSize:RFPercentage(2.2),
+                        color:'rgba(255, 165, 2,10)'
+                      }}
+                    >
+                      {this.state.reja} 
+                    </Text>
+
+                </View>
+                <TouchableWithoutFeedback
+                   onPress={()=>this.cart("jumla")}
+                >
+                  <View
+                      style={{
+                        paddingHorizontal:10,
+                        paddingVertical:5,
+                        backgroundColor:'rgba(255, 165, 2,10)',
+                        borderRadius:5,
+                        marginTop:15
+                      }}
+                  >
+                      <Text 
+                        style={{
+                          fontSize:RFPercentage(2.2),
+                          color:'#FFF'
+                        }}
+                      >
+                        Weka Oda Kwa jumla
+                      </Text>
+                  </View>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback
+                    onPress={()=>this.cart("reja")}
+                >
+                  <View
+                      style={{
+                        paddingHorizontal:10,
+                        paddingVertical:5,
+                        backgroundColor:'rgba(255, 165, 2,10)',
+                        borderRadius:5,
+                        marginTop:15
+                      }}
+                  >
+                      <Text 
+                        style={{
+                          fontSize:RFPercentage(2.2),
+                          color:'#FFF'
+                        }}
+                      >
+                        Weka Oda Kwa RejaReja
+                      </Text>
+                  </View>
+                </TouchableWithoutFeedback>
+              </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
 
 
       <ImageBackground 
@@ -124,34 +350,39 @@ export default class Maskani extends Component {
                marginTop:30
               }}
           >
-            <View 
-              style={{
-                flexDirection:'row',
-                backgroundColor:'#f1f2f6',
-                justifyContent:'space-between',
-                alignItems:'center',
-                width:200,
-                borderRadius:5,
-                marginLeft:20,
-                marginRight:15,
-                paddingHorizontal:10,
-                paddingVertical:5
-              }}
+            <TouchableWithoutFeedback
+              onPress={()=>this.props.navigation.navigate ("Vyakula")}
             >
-              <TextInput 
+              <View 
                 style={{
-                  width:"90%",
-                  fontSize:RFPercentage(2.2)
+                  flexDirection:'row',
+                  backgroundColor:'#f1f2f6',
+                  justifyContent:'space-between',
+                  alignItems:'center',
+                  width:200,
+                  borderRadius:5,
+                  marginLeft:20,
+                  marginRight:15,
+                  paddingHorizontal:10,
+                  paddingVertical:5
                 }}
-                placeholder="Tafuta Bidhaa"
-                
-              />  
-              <EvilIcons
-                name="search"
-                color="#a4b0be" 
-                size={25}
-              />
-            </View>  
+              >
+                <Text 
+                  style={{
+                    width:"90%",
+                    fontSize:RFPercentage(2.2),
+                    color:'#AAA'
+                  }}
+                >  
+                Tafuta Bidhaa
+                </Text>
+                <EvilIcons
+                  name="search"
+                  color="#a4b0be" 
+                  size={25}
+                />
+              </View> 
+            </TouchableWithoutFeedback> 
             <SimpleLineIcons
               name="settings"
               color="#57606f" 
@@ -163,7 +394,7 @@ export default class Maskani extends Component {
     
     
       <FlatList
-          data={live}
+          data={this.props.app.product}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           numColumns={2}
@@ -174,7 +405,7 @@ export default class Maskani extends Component {
             paddingTop:70
           }}
       />
-
+    
     <View 
         style={{
           backgroundColor:'white',
@@ -284,9 +515,14 @@ export default class Maskani extends Component {
         </View>
 
       </View> 
+      
 
     </View>                                                                             
 
   );
 }
   }
+  const mapStateToProps = (state) => ({
+    app: state.app
+  });
+export default connect(mapStateToProps,actions)(Maskani);

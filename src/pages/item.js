@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { Text, View,  Image, TextInput, ImageBackground,FlatList, Dimensions} from 'react-native';
 import { EvilIcons,SimpleLineIcons, AntDesign} from '@expo/vector-icons';
 import {ScrollableTabView,DefaultTabBar} from '@valdio/react-native-scrollable-tabview';
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+import { TouchableOpacity, ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import VinywajiPage from './vinywaj';
 import GesiPage from './gesi';
@@ -165,7 +165,7 @@ export default class Maskani extends Component {
         style={{
           flexDirection:'row',
           alignItems:'center',
-          marginTop:50
+          marginTop:50,
         }}
       >
         <View 
@@ -176,24 +176,37 @@ export default class Maskani extends Component {
             alignItems:'center',
             width:200,
             borderRadius:5,
-            marginHorizontal:20,
-            paddingHorizontal:10
+            marginLeft:20,
+            marginRight:15,
+            paddingHorizontal:10,
+            paddingVertical:2
           }}
         >
           <TextInput 
-            style={{}}
+
+            style={{fontSize:RFPercentage(2.2),width:'80%'}}
             placeholder="Tafuta Bidhaa"
             
           />  
           <EvilIcons
             name="search"
-            color="#a4b0be" size={20}
+            color="#a4b0be" 
+            size={25}
           />
         </View>  
-        <SimpleLineIcons
-          name="settings"
-          color="#57606f" size={25} 
-        />
+        <TouchableWithoutFeedback
+          onPress={()=>this.props.navigation.navigate("maskani")}
+        >
+          <Text 
+            style={{
+              fontSize:RFPercentage(3),
+              color:'#57606f',
+              fontWeight:'bold'
+            }}
+          > 
+          Hairisha
+        </Text>
+       </TouchableWithoutFeedback>
       </View>    
 
       <ScrollableTabView
