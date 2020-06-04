@@ -6,7 +6,7 @@ import {
     UPDATE_INTNUMBER,
     REMOVE_CART,
     UPDATE_COURSE,
-    UPDATE_PHOTO,
+    UPDATE_PRODUCT,
     UPDATE_ENROLLED,
     UPDATE_CART,
     UPDATE_ORDER
@@ -62,9 +62,9 @@ export const updateOrder =(data)=>{
     }
 }
 
-export const updateCourse =(data)=>{
+export const updateProduct =(data)=>{
     return{
-        type:UPDATE_COURSE,
+        type:UPDATE_PRODUCT,
         payload:data
     }
 }

@@ -6,7 +6,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { connect } from "react-redux";
 import * as actions from '../../actions';
-
+import axios from 'axios'; 
+import Uri from '../constants/imageURI';
 
 class Maskani extends Component {
   static navigationOptions={
@@ -22,19 +23,32 @@ state={
   id:''
 }
 
-
+componentDidMount=()=>{
+  axios.post("https://supergenge.000webhostapp.com/product.php")
+   .then(res => {
+     
+   //console.log("data",res.data);
+   //console.log("Url",Uri.uri);
+   this.props.updateProduct(res.data);
+   //this.props.navigation.navigate("Otp",{otp,res.data});
+  })
+  .catch(function (error) {
+  
+      console.log("error1",error);
+    });
+}
 
   keyExtractor=(item)=>item.id.toString()
   renderItem=({item})=>{
     let cart1=this.props.app.cart;
     let cart2=Object.keys(cart1)
     let cart=cart2.findIndex(obj =>obj ==item.id);
-    console.log("cart",cart);
+   // console.log("cart",cart);
     if(cart ==-1){
         return (
           <TouchableWithoutFeedback 
               //onPress={()=>this.props.navigation.navigate ("Vyakula")}
-              onPress={()=>this.setState({id:item.id,img:item.bg,prod:item.name,jumla:item.jumla,reja:item.reja,more:true})}
+              onPress={()=>this.setState({id:item.id,img:item.image,prod:item.name,jumla:item.jumla,reja:item.reja,more:true})}
           >
             <View 
               style={{
@@ -63,7 +77,7 @@ state={
                     }}
                   />
                 </TouchableWithoutFeedback>
-                <Image source={{uri:item.bg}}
+                <Image source={{uri:Uri.uri+item.image}}
                   style={{
                     width:Dimensions.get('screen').width/3.2, 
                     height:Dimensions.get('screen').width/3,
@@ -144,7 +158,7 @@ state={
                   }}
                 />
               </TouchableWithoutFeedback>
-              <Image source={item.bg}
+              <Image source={Uri.uri+item.image}
                 style={{
                   width:Dimensions.get('screen').width/3.2, 
                   height:Dimensions.get('screen').width/3,
@@ -255,7 +269,7 @@ state={
                     justifyContent:'center'
                   }}
               >
-                  <Image source={this.state.img}
+                  <Image source={{uri:Uri.uri+this.state.img}}
                     style={{
                       width:Dimensions.get('screen').width/2.5, 
                       height:Dimensions.get('screen').width/2.5,

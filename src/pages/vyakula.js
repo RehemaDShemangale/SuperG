@@ -6,7 +6,7 @@ import { TouchableOpacity, ScrollView, TouchableWithoutFeedback } from 'react-na
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { connect } from "react-redux";
 import * as actions from '../../actions';
-
+import Uri from '../constants/imageURI';
 
 
 
@@ -65,7 +65,7 @@ componentDidMount=()=>{
             alignSelf:'flex-end'
           }}
        />
-        <Image source={{uri:item.bg}}
+        <Image source={{uri:Uri.uri+item.image}}
         style={{
           width:Dimensions.get('screen').width/3.2, 
           height:Dimensions.get('screen').width/3,
@@ -192,7 +192,7 @@ componentDidMount=()=>{
               alignSelf:'flex-end'
             }}
         />
-          <Image source={{uri:item.bg}}
+          <Image source={{uri:Uri.uri+item.image}}
           style={{
             width:Dimensions.get('screen').width/3.2, 
             height:Dimensions.get('screen').width/3,

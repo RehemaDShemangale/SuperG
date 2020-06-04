@@ -1,0 +1,1 @@
+export default{ uri:"https://supergenge.000webhostapp.com/"}

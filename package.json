@@ -15,6 +15,7 @@
     "@react-navigation/native": "^5.4.0",
     "@redux-offline/redux-offline": "^2.6.0-expo.0",
     "@valdio/react-native-scrollable-tabview": "^0.8.12",
+    "axios": "^0.19.2",
     "expo": "^37.0.12",
     "expo-linear-gradient": "^8.1.0",
     "react": "~16.9.0",

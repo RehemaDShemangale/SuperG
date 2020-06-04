@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { connect } from "react-redux";
 import * as actions from '../../actions';
-
+import Uri from '../constants/imageURI';
 
 
 class Oda extends Component {
@@ -51,7 +51,7 @@ class Oda extends Component {
           />
         </View>
         <View>
-        <Image source={item.img}
+        <Image source={Uri.uri+item.image}
               style={{
                 width: 130, 
                 height: 150,

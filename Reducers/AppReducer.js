@@ -6,7 +6,7 @@ import {
     UPDATE_INTNUMBER,
     REMOVE_CART,
     UPDATE_COURSE,
-    UPDATE_PHOTO,
+    UPDATE_PRODUCT,
     UPDATE_ENROLLED,
     UPDATE_CART,
     UPDATE_ORDER
@@ -15,14 +15,7 @@ import {
 
 
 const initialState = {
-    product:[
-        {id:1,name:"Kabichi (Cabeg)",type:"chakula",jumla:500,reja:800,bg:"https://supergenge.000webhostapp.com/kabichi.png",desc:"kabi safi iliyo andaliwa fresh kwa matumizi ya binadamu kutoka arusha"},
-        {id:2,name:"Nyama ya ng'ombe (meat)",type:"chakula",jumla:600,reja:900,bg:"https://supergenge.000webhostapp.com/nyama.png",desc:"Nyama safi isiyo na mafuta wala mifupa"},
-        {id:3,name:"Bilinganya (Eggplant)",type:"chakula",jumla:700,reja:1000,bg:"https://supergenge.000webhostapp.com/bili.jpg",desc:"Bilinganya za duara kutoka morogoro"},
-        {id:4,name:"Mchele (Rice)",type:"chakula",jumla:800,reja:1000,bg:"https://supergenge.000webhostapp.com/mchele.png",desc:"Mchele safi kutoka mbeya hauhitaji kuchambua"},
-        {id:5,name:"Palmix",type:"other",jumla:900,reja:1200,bg:"https://supergenge.000webhostapp.com/palmOil.jpg",desc:"palmix kutoka india"},
-        {id:6,name:"Blue Magic Oil",type:"vipodozi",jumla:980,reja:1100,bg:"https://supergenge.000webhostapp.com/oil.jpg",desc:"Mafuta mazuri ya nywele kutoka india"},
-    ],
+    product:[],
     UserId:'',
     Country:'',
     Int_phone:'',
@@ -59,14 +52,11 @@ export default (state = initialState, action) => {
             };
             break;
 
-        case UPDATE_ENROLLED:
+        case UPDATE_PRODUCT:
             //console.log("action",action.payload)
             return {
                 ...state,
-                enrolled:{
-                    ...state.enrolled,
-                    [action.payload]:action.payload
-                }
+                product:action.payload
             };
             break;
         
