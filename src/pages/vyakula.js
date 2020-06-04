@@ -4,24 +4,11 @@ import { EvilIcons,SimpleLineIcons, AntDesign} from '@expo/vector-icons';
 import {ScrollableTabView,DefaultTabBar} from '@valdio/react-native-scrollable-tabview';
 import { TouchableOpacity, ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import VinywajiPage from './vinywaj';
-import GesiPage from './gesi';
-import VituPage from './v2vingine';
 import { connect } from "react-redux";
 import * as actions from '../../actions';
 
 
-let bgu=require('../../assets/kabichi.png');
 
-
-let live=[
-  {id:1,name:"Kabichi (Cabeg) ya Arusha",name0:"Kabichi safi iliyo andaliwa freshi kwa \n matumizi ya binadam kutoka Arusha",name1:"Jumla 500tshs kuanzia makabichi 10 na kuendelea ",name2:"Rejareja 600tshs kwanzia 1 na kuendelea",bg:bgu},
-  {id:2,name:"Kabichi (Cabeg) ya Mbeya",name0:"Kabichi safi iliyo andaliwa freshi kwa \n matumizi ya binadam kutoka mbeya",name1:"Jumla 600tshs kuanzia makabichi 10 na kuendelea",name2:"Rejareja 700tshs kwanzia 1 na kuendelea",bg:bgu},
-  {id:3,name:"Kabichi (Cabeg) Nyekundu",name0:"Kabichi safi nyekundu iliyo andaliwa freshi kwa \n matumizi ya binadam ",name1:"Jumla 700tshs kuanzia makabichi 10 na kuendelea",name2:"Rejareja 800tshs kwanzia 1 na kuendelea",bg:bgu},
-  {id:4,name:"Kabichi (Cabeg) ya Iringa",name0:"Kabichi safi iliyo andaliwa freshi kwa \n matumizi ya binadam kutoka Iringa",name1:"Jumla 800tshs kuanzia makabichi 10 na kuendelea",name2:"Rejareja 900tshs kwanzia 1 na kuendelea",bg:bgu},
-  {id:5,name:"Kabichi (Cabeg) ya DSM",name0:"Kabichi safi iliyo andaliwa freshi kwa \n matumizi ya binadam kutoka DSM",name1:"Jumla 900tshs kuanzia makabichi 10 na kuendelea",name2:"Rejareja 1000tshs kwanzia 1 na kuendelea",bg:bgu},
-  {id:6,name:"Kabichi (Cabeg) ya Moro",name0:"Kabichi safi iliyo andaliwa freshi kwa \n matumizi ya binadam kutoka Moro",name1:"Jumla 980tshs kuanzia makabichi 10 na kuendelea",name2:"Rejareja 1000tshs kwanzia 1 na kuendelea",bg:bgu},
-]
 
 class Vyakula extends Component {
   static navigationOptions={
@@ -40,10 +27,12 @@ componentDidMount=()=>{
   // this.setText.focus()
    this.editSticker.focus()
    let product=this.props.app.product;
+
    let pro1= product.filter(obj =>obj.type == "chakula");
    let pro2= product.filter(obj =>obj.type == "vipodozi");
    let pro3= product.filter(obj =>obj.type == "vinywaji");
    let pro4= product.filter(obj =>obj.type == "other");
+   
    this.setState({vyakula:pro1,vinywaji:pro3,vipodozi:pro2,vingine:pro4});
 }
 
@@ -76,7 +65,7 @@ componentDidMount=()=>{
             alignSelf:'flex-end'
           }}
        />
-        <Image source={item.bg}
+        <Image source={{uri:item.bg}}
         style={{
           width:Dimensions.get('screen').width/3.2, 
           height:Dimensions.get('screen').width/3,
@@ -203,7 +192,7 @@ componentDidMount=()=>{
               alignSelf:'flex-end'
             }}
         />
-          <Image source={item.bg}
+          <Image source={{uri:item.bg}}
           style={{
             width:Dimensions.get('screen').width/3.2, 
             height:Dimensions.get('screen').width/3,
@@ -305,11 +294,16 @@ componentDidMount=()=>{
   change=(item)=>{
       this.setState({search:item});
       let product=this.props.app.product;
+    
       let pro= product.filter(obj => obj.name.includes(item) && obj.type == "chakula");
+      let pro2= product.filter(obj => obj.name.includes(item) && obj.type == "vipodozi");
+      let pro3= product.filter(obj => obj.name.includes(item) && obj.type == "vinywaji");
+      let pro4= product.filter(obj => obj.name.includes(item) && obj.type == "vingine");
       //let pro= product.filter(obj => obj.name.includes(item));
       console.log("new product",product)
-      console.log("new product1",pro)
-      this.setState({vyakula:pro});
+
+
+      this.setState({vyakula:pro,vipodozi:pro2,vinywaji:pro3,vingine:pro4});
   }
 
   showVyakula=()=>{
@@ -332,6 +326,123 @@ componentDidMount=()=>{
       return(
         <View
             tabLabel='Vyakula'
+            style={{
+              flex:1,
+              alignItems:'center',
+              justifyContent:'center'
+            }}
+        >
+            <Text 
+              style={{
+                fontSize:RFPercentage(2.5),
+                color:'rgba(255, 165, 2,10)',
+              }}
+            >
+             Hakuna hiyo bidhaa
+            </Text>
+        </View>
+      )
+    }
+  }
+
+  showVipodozi=()=>{
+    if(this.state.vipodozi.length > 0){
+      return(
+          <FlatList
+              tabLabel='Vipodozi'
+              data={this.state.vipodozi}
+              keyExtractor={this.keyExtractor}
+              renderItem={this.renderItem1}
+              horizontal={false}
+              showsVerticalScrollIndicator={false}
+              style={{
+                paddingHorizontal:2
+              }}
+          />
+      )
+    }
+    else{
+      return(
+        <View
+            tabLabel='Vipodozi'
+            style={{
+              flex:1,
+              alignItems:'center',
+              justifyContent:'center'
+            }}
+        >
+            <Text 
+              style={{
+                fontSize:RFPercentage(2.5),
+                color:'rgba(255, 165, 2,10)',
+              }}
+            >
+             Hakuna hiyo bidhaa
+            </Text>
+        </View>
+      )
+    }
+  }
+
+  showVinywaji=()=>{
+    if(this.state.vinywaji.length > 0){
+      return(
+          <FlatList
+              tabLabel='Vinywaji'
+              data={this.state.vinywaji}
+              keyExtractor={this.keyExtractor}
+              renderItem={this.renderItem1}
+              horizontal={false}
+              showsVerticalScrollIndicator={false}
+              style={{
+                paddingHorizontal:2
+              }}
+          />
+      )
+    }
+    else{
+      return(
+        <View
+            tabLabel='Vinywaji'
+            style={{
+              flex:1,
+              alignItems:'center',
+              justifyContent:'center'
+            }}
+        >
+            <Text 
+              style={{
+                fontSize:RFPercentage(2.5),
+                color:'rgba(255, 165, 2,10)',
+              }}
+            >
+             Hakuna hiyo bidhaa
+            </Text>
+        </View>
+      )
+    }
+  }
+
+  showVingine=()=>{
+    if(this.state.vingine.length > 0){
+      return(
+          <FlatList
+              tabLabel='Vitu Vingine'
+              data={this.state.vingine}
+              keyExtractor={this.keyExtractor}
+              renderItem={this.renderItem1}
+              horizontal={false}
+              showsVerticalScrollIndicator={false}
+              style={{
+                paddingHorizontal:2
+              }}
+          />
+      )
+    }
+    else{
+      return(
+        <View
+            tabLabel='Vitu Vingine'
             style={{
               flex:1,
               alignItems:'center',
@@ -427,39 +538,11 @@ componentDidMount=()=>{
       >
           
           {this.showVyakula()}
-          <FlatList
-              tabLabel='Vinywaji'
-              data={this.props.app.product}
-              keyExtractor={this.keyExtractor}
-              renderItem={this.renderItem}
-              horizontal={false}
-              showsVerticalScrollIndicator={false}
-              style={{
-                paddingHorizontal:2
-              }}
-          />
-          <FlatList
-              tabLabel='Vipodozi'
-              data={this.props.app.product}
-              keyExtractor={this.keyExtractor}
-              renderItem={this.renderItem}
-              horizontal={false}
-              showsVerticalScrollIndicator={false}
-              style={{
-                paddingHorizontal:2
-              }}
-          />
-           <FlatList
-              tabLabel='Vitu vingine'
-              data={this.props.app.product}
-              keyExtractor={this.keyExtractor}
-              renderItem={this.renderItem}
-              horizontal={false}
-              showsVerticalScrollIndicator={false}
-              style={{
-                paddingHorizontal:2
-              }}
-          />
+          {this.showVinywaji()}
+          {this.showVipodozi()}
+
+          {this.showVingine()}
+
 
       </ScrollableTabView> 
 

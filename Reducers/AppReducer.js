@@ -12,21 +12,16 @@ import {
     UPDATE_ORDER
 } from '../actions/types';
 
-let bgu=require('../assets/kabichi.png');
-let bgu1=require('../assets/nyama.png');
-let bgu2=require('../assets/bili.jpg');
-let bgu3=require('../assets/mchele.png');
-let bgu4=require('../assets/palmOil.jpg');
-let bgu5=require('../assets/oil.jpg');
+
 
 const initialState = {
     product:[
-        {id:1,name:"Kabichi (Cabeg)",type:"chakula",jumla:500,reja:800,bg:bgu,desc:"kabi safi iliyo andaliwa fresh kwa matumizi ya binadamu kutoka arusha"},
-        {id:2,name:"Nyama ya ng'ombe (meat)",type:"chakula",jumla:600,reja:900,bg:bgu1,desc:"Nyama safi isiyo na mafuta wala mifupa"},
-        {id:3,name:"Bilinganya (Eggplant)",type:"chakula",jumla:700,reja:1000,bg:bgu2,desc:"Bilinganya za duara kutoka morogoro"},
-        {id:4,name:"Mchele (Rice)",type:"chakula",jumla:800,reja:1000,bg:bgu3,desc:"Mchele safi kutoka mbeya hauhitaji kuchambua"},
-        {id:5,name:"Palmix",type:"other",jumla:900,reja:1200,bg:bgu4,desc:"palmix kutoka india"},
-        {id:6,name:"Blue Magic Oil",type:"vipodozi",jumla:980,reja:1100,bg:bgu5,desc:"Mafuta mazuri ya nywele kutoka india"},
+        {id:1,name:"Kabichi (Cabeg)",type:"chakula",jumla:500,reja:800,bg:"https://supergenge.000webhostapp.com/kabichi.png",desc:"kabi safi iliyo andaliwa fresh kwa matumizi ya binadamu kutoka arusha"},
+        {id:2,name:"Nyama ya ng'ombe (meat)",type:"chakula",jumla:600,reja:900,bg:"https://supergenge.000webhostapp.com/nyama.png",desc:"Nyama safi isiyo na mafuta wala mifupa"},
+        {id:3,name:"Bilinganya (Eggplant)",type:"chakula",jumla:700,reja:1000,bg:"https://supergenge.000webhostapp.com/bili.jpg",desc:"Bilinganya za duara kutoka morogoro"},
+        {id:4,name:"Mchele (Rice)",type:"chakula",jumla:800,reja:1000,bg:"https://supergenge.000webhostapp.com/mchele.png",desc:"Mchele safi kutoka mbeya hauhitaji kuchambua"},
+        {id:5,name:"Palmix",type:"other",jumla:900,reja:1200,bg:"https://supergenge.000webhostapp.com/palmOil.jpg",desc:"palmix kutoka india"},
+        {id:6,name:"Blue Magic Oil",type:"vipodozi",jumla:980,reja:1100,bg:"https://supergenge.000webhostapp.com/oil.jpg",desc:"Mafuta mazuri ya nywele kutoka india"},
     ],
     UserId:'',
     Country:'',

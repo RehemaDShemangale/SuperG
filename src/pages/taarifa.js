@@ -106,8 +106,7 @@ export default class Maskani extends Component {
                   marginTop:5,
                   borderWidth:0.2,
                   borderRadius:5,
-                  paddingHorizontal:5,
-                  
+                  paddingHorizontal:5,                 
                   backgroundColor:'white',  
                   shadowColor: "#000",
                   shadowOffset: 

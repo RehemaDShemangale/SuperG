@@ -22,6 +22,8 @@ state={
   id:''
 }
 
+
+
   keyExtractor=(item)=>item.id.toString()
   renderItem=({item})=>{
     let cart1=this.props.app.cart;
@@ -61,7 +63,7 @@ state={
                     }}
                   />
                 </TouchableWithoutFeedback>
-                <Image source={item.bg}
+                <Image source={{uri:item.bg}}
                   style={{
                     width:Dimensions.get('screen').width/3.2, 
                     height:Dimensions.get('screen').width/3,

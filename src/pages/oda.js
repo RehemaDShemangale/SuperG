@@ -6,22 +6,7 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { connect } from "react-redux";
 import * as actions from '../../actions';
 
-let bgu=require('../../assets/kabichi.png');
-let bgu1=require('../../assets/nyama.png');
-let bgu2=require('../../assets/bili.jpg');
-let bgu3=require('../../assets/mchele.png');
-let bgu4=require('../../assets/palmOil.jpg');
 
-
-
-let live=[
-  {id:1,name:"Kabichi (Cabeg)",name1:"Jumla 500tshs  1kg",name2:"rejareja 5100tshs  1kg",bg:bgu},
-  {id:2,name:"Nyama ya ng'ombe (meat)",name1:"Jumla 600tshs  1kg",name2:"rejareja 5002tshs  1kg",bg:bgu1},
-  {id:3,name:"Bilinganya (Eggplant)",name1:"Jumla 700tshs  1kg",name2:"rejareja 5020tshs  1kg",bg:bgu2},
-  {id:4,name:"Mchele (Rice)",name1:"Jumla 800tshs  1kg",name2:"rejareja 5030tshs  1kg",bg:bgu3},
-  {id:5,name:"Palmix",name1:"Jumla 900tshs  1kg",name2:"rejareja 5030tshs  1kg",bg:bgu4},
-
-]
 
 class Oda extends Component {
   static navigationOptions={
