@@ -12,6 +12,7 @@ import Taarifa from './taarifa';
 import Oda from './oda';
 import Jisajiri from './jisajir';
 import Vyakula from './vyakula';
+import Malipo from './malipo';
 
 
 const MaskaniStack = createStackNavigator(
@@ -57,6 +58,7 @@ const OdaStack = createStackNavigator(
     {
       //Defination of Navigaton from setting screen
       Oda: { screen: Oda},
+      Malipo: { screen: Malipo}
     },
     {
       defaultNavigationOptions: {
@@ -118,16 +120,3 @@ const App = createBottomTabNavigator(
   }
 );
 export default createAppContainer(App);
-
-/*const AppContainer = createAppContainer(App);
-export default class Tab extends Component{
-    static navigationOptions={
-        headerShown:false,
-      }
-  
-  render(){
-  return (
-    <AppContainer />
-  );
-}
-}*/

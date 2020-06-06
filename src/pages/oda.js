@@ -14,6 +14,7 @@ class Oda extends Component {
 }
   keyExtractor=(item)=>item.id.toString()
   renderItem=({item})=>{
+    console.log("item",item)
     return (
       <View 
           style={{
@@ -51,7 +52,7 @@ class Oda extends Component {
           />
         </View>
         <View>
-        <Image source={Uri.uri+item.image}
+        <Image source={{uri:Uri.uri+item.img}}
               style={{
                 width: 130, 
                 height: 150,
@@ -76,7 +77,7 @@ class Oda extends Component {
                     fontSize:RFPercentage(1.7),
                     color:'rgba(255, 165, 2,10)'
                   }}
-              >{item.type} </Text>
+              >Tsh {item.type}/= </Text>
               
             </View>
           </View>
@@ -138,41 +139,47 @@ class Oda extends Component {
           }}
       >
           {this.showMain()}
-          {Object.values(this.props.app.cart).length > 0 && <View 
-              style={{
-                alignItems:'center',
-                justifyContent:'center',
-                backgroundColor:'white',
-                shadowColor: "#000",
-                shadowOffset: {
-                  width: 0,
-                  height: 6,
-                },
-                shadowOpacity: 0.39,
-                shadowRadius: 8.30,
-                elevation: 13,
-                width:"80%",
-                flexDirection:'row',
-                alignSelf:'center',
-                position:'absolute',
-                bottom:10
-              }}
+          {Object.values(this.props.app.cart).length > 0 && 
+          <TouchableWithoutFeedback
+              onPress={()=>this.props.navigation.navigate("Malipo")}
           >
-            <Text 
-              style={{
-                paddingBottom:3,
-                fontSize:RFPercentage(2.2),
-                marginRight:5
-              }}
+            <View 
+                style={{
+                  alignItems:'center',
+                  justifyContent:'center',
+                  backgroundColor:'white',
+                  shadowColor: "#000",
+                  shadowOffset: {
+                    width: 0,
+                    height: 6,
+                  },
+                  shadowOpacity: 0.39,
+                  shadowRadius: 8.30,
+                  elevation: 13,
+                  width:"80%",
+                  flexDirection:'row',
+                  alignSelf:'center',
+                  position:'absolute',
+                  bottom:10
+                }}
             >
-              Nenda kakamilishe malipo ya oda zako zote 
-            </Text>          
-            <MaterialCommunityIcons
-                name="chevron-triple-right" 
-                size={20} 
-                color="black"  
-            />
-          </View>}
+              <Text 
+                style={{
+                  paddingBottom:3,
+                  fontSize:RFPercentage(2.2),
+                  marginRight:5
+                }}
+              >
+                Nenda kakamilishe malipo ya oda zako zote 
+              </Text>          
+              <MaterialCommunityIcons
+                  name="chevron-triple-right" 
+                  size={20} 
+                  color="black"  
+              />
+            </View>
+          </TouchableWithoutFeedback>
+          }
       </ImageBackground>
   );
 }

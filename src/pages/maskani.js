@@ -20,6 +20,7 @@ state={
   prod:"",
   jumla:'',
   reja:'',
+  desc:"",
   id:''
 }
 
@@ -48,7 +49,7 @@ componentDidMount=()=>{
         return (
           <TouchableWithoutFeedback 
               //onPress={()=>this.props.navigation.navigate ("Vyakula")}
-              onPress={()=>this.setState({id:item.id,img:item.image,prod:item.name,jumla:item.jumla,reja:item.reja,more:true})}
+              onPress={()=>this.setState({desc:item.description,id:item.id,img:item.image,prod:item.name,jumla:item.jumla,reja:item.reja,more:true})}
           >
             <View 
               style={{
@@ -158,7 +159,7 @@ componentDidMount=()=>{
                   }}
                 />
               </TouchableWithoutFeedback>
-              <Image source={Uri.uri+item.image}
+              <Image source={{uri:Uri.uri+item.image}}
                 style={{
                   width:Dimensions.get('screen').width/3.2, 
                   height:Dimensions.get('screen').width/3,
@@ -181,14 +182,14 @@ componentDidMount=()=>{
                       fontSize:RFPercentage(1.7),
                       color:'rgba(255, 165, 2,10)'
                     }}
-                >{item.name1} </Text>
+                >Jumla {item.jumla}tshs 1kg  </Text>
                 <Text 
                   style={{
                     fontSize:RFPercentage(1.7),
                     color:'rgba(255, 165, 2,10)'
                   }}
                 >
-                  {item.name2} 
+                 rejareja {item.reja}tshs 1kg 
                 </Text>
 
             </View>
@@ -205,6 +206,7 @@ componentDidMount=()=>{
       img:this.state.img,
       name:this.state.prod,
       type:item =="jumla"?this.state.jumla:this.state.reja,
+      quantity:item =="jumla"?3:1,
       id:this.state.id
     }
     this.setState({more:false})
@@ -284,7 +286,11 @@ componentDidMount=()=>{
                     fontSize:RFPercentage(2.7)
                   }}
                 >{this.state.prod} </Text>
-              
+                <Text 
+                    style={{
+                      fontSize:RFPercentage(2.3)
+                    }}
+                >{this.state.desc} </Text>
               
                 <View>
                     <Text 
@@ -292,14 +298,14 @@ componentDidMount=()=>{
                           fontSize:RFPercentage(2.2),
                           color:'rgba(255, 165, 2,10)'
                         }}
-                    >{this.state.jumla} </Text>
+                    >jumla ni Tsh{this.state.jumla} </Text>
                     <Text 
                       style={{
                         fontSize:RFPercentage(2.2),
                         color:'rgba(255, 165, 2,10)'
                       }}
                     >
-                      {this.state.reja} 
+                    Rejareja ni Tsh{this.state.reja} 
                     </Text>
 
                 </View>
