@@ -1,8 +1,7 @@
 import React, { Component} from 'react';
-import { FlatList, Text, View, ImageBackground, TextInput,Image, ScrollView,TabBarIOS,Dimensions } from 'react-native';
+import { FlatList, Text, View, ImageBackground,TouchableWithoutFeedback,TouchableOpacity, TextInput,Image, ScrollView,TabBarIOS,Dimensions } from 'react-native';
 import {  AntDesign} from '@expo/vector-icons';
 import Jisajiri from './jisajir';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { connect } from "react-redux";
 import * as actions from '../../actions';
@@ -16,10 +15,29 @@ class Malipo extends Component {
       value:1
   }
 
+  componentDidMount=()=>{
+    this.props.updateMalipoCart(Object.values(this.props.app.cart))
+  }
+
+  itemQtyPiker=(qty,id)=>{
+    console.log("qty",qty +"n"+ id)
+    this.props.quantityUpdate(qty,id);
+  }
+
+  delete=(id)=>{
+    this.props.deleteMalipoCart(id);
+    let malipo=this.props.app.malipo_cart;
+    console.log("malipo1",malipo)
+    console.log("malipo.length",malipo.length)
+    if(malipo.length == 1){
+        this.props.navigation.goBack();
+    }
+  }
+
   showProduct=()=>{
-      console.log("cart",this.props.app.cart)
-      let cart=Object.values(this.props.app.cart);
-       return cart.map((item)=>(
+      console.log("cart malipo",this.props.app.malipo_cart)
+      let malipo_cart=this.props.app.malipo_cart;
+       return malipo_cart.map((item)=>(
             <View
                 key={item.id}
                  style={{
@@ -31,11 +49,15 @@ class Malipo extends Component {
                      borderBottomColor:"#AAA"
                  }}
             >
-                <AntDesign
-                 name="delete" 
-                 color="red"  
-                 size={18} 
-                />
+                <TouchableWithoutFeedback
+                    onPress={()=>this.delete(item.id)}
+                >
+                    <AntDesign
+                    name="delete" 
+                    color="red"  
+                    size={20} 
+                    />
+                </TouchableWithoutFeedback>
                 <Text 
                    style={{
                      color:'#000',
@@ -54,14 +76,17 @@ class Malipo extends Component {
                 >
                     <NumericInput 
                         value={item.quantity} 
-                        onChange={value => this.setState({value})} 
-                        onLimitReached={(isMax,msg) => console.log(isMax,msg)}
-                        totalWidth={70} 
+                        onChange={qty => this.itemQtyPiker(qty, item.id)}
+                       // onLimitReached={(isMax,msg) => console.log(isMax,msg)}
+                        totalWidth={100} 
                         totalHeight={30} 
                         iconSize={25}
                         step={1}
                         valueType='real'
-                        rounded 
+                        minValue={1}
+                        editable={false}
+                       // rounded 
+                        borderColor="black"
                         textColor='#B0228C' 
                         iconStyle={{ color: 'white' }} 
                         rightButtonBackgroundColor='#000' 
@@ -185,7 +210,7 @@ class Malipo extends Component {
                         color:'rgba(255, 165, 2,10)',
                         fontSize:RFPercentage(2.3),
                         }}
-                   >5000
+                   >{this.props.total - 1000}
                    </Text>
                </View>
 
@@ -212,7 +237,7 @@ class Malipo extends Component {
                         color:'rgba(255, 165, 2,10)',
                         fontSize:RFPercentage(2.3),
                         }}
-                   >2000
+                   >1000
                    </Text>
                </View>
                <View
@@ -253,7 +278,10 @@ class Malipo extends Component {
                         justifyContent:'space-between',
                         flexDirection:'row',
                         marginTop:15,
-                        marginBottom:30
+                        marginBottom:30,
+                        borderBottomWidth:1,
+                        borderBottomColor:'#AAA',
+                        paddingBottom:15
                     }}
                >
                    <Text 
@@ -268,11 +296,14 @@ class Malipo extends Component {
                         color:'rgba(255, 165, 2,10)',
                         fontSize:RFPercentage(2.3),
                         }}
-                   >5000
+                   >{this.props.total}
                    </Text>
                </View>
-               
-               <View
+           </View>
+           <TouchableOpacity
+                onPress={()=>this.props.navigation.navigate("Tumaoda")}
+           >
+            <View
                     style={{
                         height:Dimensions.get('screen').width/9,
                         width:Dimensions.get('screen').width,
@@ -280,8 +311,8 @@ class Malipo extends Component {
                         alignItems:'center',
                         justifyContent:'center'
                     }}
-               >
-                   <Text 
+                >
+                    <Text 
                         style={{
                         fontWeight:'bold',
                         fontSize:RFPercentage(2.5),
@@ -290,16 +321,19 @@ class Malipo extends Component {
                     >
                         ENDELEA
                     </Text>
-               </View>
-           </View>
-          
+                </View>
+            </TouchableOpacity>
       </View>
     
     );
   }
   }
   const mapStateToProps = (state) => ({
-    app: state.app
+    app: state.app,
+    total:Object.values(state.app.malipo_cart).reduce(
+        (prev, cur) => prev + cur.quantity * cur.type,
+        1000
+      )
   });
 export default connect(mapStateToProps,actions)(Malipo);
 

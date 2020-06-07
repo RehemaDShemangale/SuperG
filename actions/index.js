@@ -2,12 +2,12 @@ import {
     UPDATE_USER,
     UPDATE_CONTACT,
     RESET_DATA,
-    UPDATE_COUNTRY,
+    REMOVE_MALIPOCART,
     UPDATE_INTNUMBER,
     REMOVE_CART,
-    UPDATE_COURSE,
+    UPDATE_MALIPOCART,
     UPDATE_PRODUCT,
-    UPDATE_ENROLLED,
+    UPDATE_QUANTITY,
     UPDATE_CART,
     UPDATE_ORDER
  } from './types';
@@ -23,11 +23,40 @@ export const updateUser =(data)=>{
     }
 }
 
-export const updateEnrolled =(data)=>{
-    return{
-        type:UPDATE_ENROLLED,
-        payload:data
-    }
+export const quantityUpdate =(qty,id)=>{
+    return (dispatch, getState) => {
+        const cart = getState().app.malipo_cart;
+        const product = getState().app.product;
+        const findObj =product.findIndex(obj => obj.id == id);
+        const findObj1 =cart.findIndex(obj => obj.id == id);
+        console.log("obj",findObj);
+        const prod=product[findObj];
+        const newcart=cart[findObj1];
+          //console.log("action1",cart);
+          //console.log("newcart",newcart);
+           
+          if(qty > 2){
+
+            cart[findObj1] = { ...newcart, quantity: qty,type:prod.jumla };
+
+            
+            //console.log("action2",cart);
+              dispatch({
+                type:UPDATE_QUANTITY,
+                payload:cart
+              });
+          }
+          else{
+            cart[findObj1] = { ...newcart, quantity: qty,type:prod.reja };
+
+            //console.log("action2",cart);
+              dispatch({
+                type:UPDATE_QUANTITY,
+                payload:cart
+              });
+          }
+
+      };
 }
 
 export const removeCart =(data)=>{
@@ -35,16 +64,30 @@ export const removeCart =(data)=>{
         const cart = getState().app.cart;
         
        const newcart=delete cart[data]
-          console.log("action1",cart)
-          console.log("newcart",newcart)
+         // console.log("action1",cart)
+         // console.log("newcart",newcart)
           dispatch({
             type:REMOVE_CART,
             payload:cart
           });
         
-    
-        //console.log("original data=", now_od_items);
-        //console.log("updated data=", new_od_items);
+      };
+}
+
+export const deleteMalipoCart =(data)=>{
+    return (dispatch, getState) => {
+        const malipo_cart = getState().app.malipo_cart;
+        const cart = getState().app.cart;
+        let fin=malipo_cart.filter(obj =>obj.id !=data)
+
+          console.log("action",cart)
+          console.log("action1",malipo_cart)
+          console.log("newcart",fin)
+          dispatch({
+            type:REMOVE_MALIPOCART,
+            payload:fin
+          });
+        
       };
 }
 
@@ -69,10 +112,10 @@ export const updateProduct =(data)=>{
     }
 }
 
-export const updateCountry =(data)=>{
+export const updateMalipoCart =(data)=>{
     return{
-        type:UPDATE_COUNTRY,
-        country:data
+        type:UPDATE_MALIPOCART,
+        payload:data
     }
 }
 

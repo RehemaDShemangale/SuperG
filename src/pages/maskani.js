@@ -21,7 +21,8 @@ state={
   jumla:'',
   reja:'',
   desc:"",
-  id:''
+  id:'',
+  active:1,
 }
 
 componentDidMount=()=>{
@@ -207,6 +208,7 @@ componentDidMount=()=>{
       name:this.state.prod,
       type:item =="jumla"?this.state.jumla:this.state.reja,
       quantity:item =="jumla"?3:1,
+      type_name:item =="jumla"?"jumla":"reja",
       id:this.state.id
     }
     this.setState({more:false})
@@ -234,6 +236,43 @@ componentDidMount=()=>{
   }
   };
 
+  showMain=()=>{
+    if(this.state.active == 1){
+      return(
+        <FlatList
+          data={this.props.app.product}
+          keyExtractor={this.keyExtractor}
+          renderItem={this.renderItem}
+          numColumns={2}
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{paddingBottom:70}}
+          style={{
+            paddingTop:70
+          }}
+      />
+      )
+    }
+    else{
+      return(
+        <View
+            style={{
+              flex:1,
+              alignItems:'center',
+              justifyContent:'center'
+            }}
+        >
+            <Text 
+              style={{
+                fontWeight:'bold',
+                fontSize:RFPercentage(2.8)
+              }}
+            >Hakuna Oda iliyo kamilika
+            </Text>
+        </View>
+      )
+    }
+  }
   
   render(){
     
@@ -414,20 +453,8 @@ componentDidMount=()=>{
 
     </ImageBackground>
     
-    
-      <FlatList
-          data={this.props.app.product}
-          keyExtractor={this.keyExtractor}
-          renderItem={this.renderItem}
-          numColumns={2}
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{paddingBottom:70}}
-          style={{
-            paddingTop:70
-          }}
-      />
-    
+    {this.showMain()}
+
     <View 
         style={{
           backgroundColor:'white',
@@ -514,26 +541,36 @@ componentDidMount=()=>{
             justifyContent:'space-between'
           }}
         >
-          <Text 
-            style={{
-              borderBottomWidth:3,
-              color:'rgba(255, 165, 2,10)',
-              paddingBottom:24,
-              paddingHorizontal:15,
-              fontSize:RFPercentage(2.5),
-              borderBottomColor:'rgba(255, 165, 2,10)'
-            }}
-          >Menu
-          </Text>
-          
-          <Text 
-            style={{
-              marginRight:15,
-              fontSize:RFPercentage(2.5)
-            }}
-          >Msaada
-          </Text>
-
+          <TouchableWithoutFeedback
+              onPress={()=>this.setState({active:1})}
+          >
+            <Text 
+              style={{
+                borderBottomWidth:3,
+                color:this.state.active ==1?'rgba(255, 165, 2,10)':"black",
+                paddingBottom:24,
+                paddingHorizontal:15,
+                fontSize:RFPercentage(2.5),
+                borderBottomColor:this.state.active ==1?'rgba(255, 165, 2,10)':"black"
+              }}
+            >Bidhaa
+            </Text>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={()=>this.setState({active:2})}
+          >
+            <Text 
+              style={{
+                marginRight:15,
+                fontSize:RFPercentage(2.5),
+                borderBottomWidth:3,
+                paddingBottom:24,
+                color:this.state.active ==2?'rgba(255, 165, 2,10)':"black",
+                borderBottomColor:this.state.active ==2?'rgba(255, 165, 2,10)':"black"
+              }}
+            >Oda Kamilifu
+            </Text>
+          </TouchableWithoutFeedback>
         </View>
 
       </View> 

@@ -14,7 +14,7 @@ class Oda extends Component {
 }
   keyExtractor=(item)=>item.id.toString()
   renderItem=({item})=>{
-    console.log("item",item)
+    //console.log("item",item)
     return (
       <View 
           style={{

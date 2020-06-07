@@ -2,12 +2,12 @@ import {
     UPDATE_USER,
     UPDATE_CONTACT,
     RESET_DATA,
-    UPDATE_COUNTRY,
+    REMOVE_MALIPOCART,
     UPDATE_INTNUMBER,
     REMOVE_CART,
-    UPDATE_COURSE,
+    UPDATE_MALIPOCART,
     UPDATE_PRODUCT,
-    UPDATE_ENROLLED,
+    UPDATE_QUANTITY,
     UPDATE_CART,
     UPDATE_ORDER
 } from '../actions/types';
@@ -24,7 +24,7 @@ const initialState = {
     Courses:{},
     photo:'',
     enrolled:{},
-    lessons:{},
+    malipo_cart:[],
     cart:{},
     order:{}
 
@@ -82,6 +82,7 @@ export default (state = initialState, action) => {
                 }
             };
             break;
+
         case REMOVE_CART:
             return {
                 ...state,
@@ -90,28 +91,26 @@ export default (state = initialState, action) => {
             }
             break;
 
-        case UPDATE_COUNTRY:
-                    return {
-                        ...state,
-                        Country:action.country
-                    };
-                    break;   
-
-         case UPDATE_COURSE:
-            
-                    return {
-                        ...state,
-                        Courses:{
-                            ...state.Courses,
-                         [action.payload.program_id]:{
-                            ...state.Courses[action.payload.program_id],
-                          [action.payload.id]:{
-                            ...action.payload
-                          } 
-                         }
-                        }
-                    };
-                    break;   
+        case UPDATE_QUANTITY:
+            return {
+                ...state,
+                malipo_cart:action.payload
+                
+            }
+            break;
+        case REMOVE_MALIPOCART:
+            return {
+                ...state,
+                malipo_cart:action.payload
+            }
+            break;
+    
+        case UPDATE_MALIPOCART:
+            return {
+                ...state,
+                malipo_cart:action.payload
+            };
+            break;   
 
         case UPDATE_INTNUMBER:
                         return {

@@ -13,6 +13,7 @@ import Oda from './oda';
 import Jisajiri from './jisajir';
 import Vyakula from './vyakula';
 import Malipo from './malipo';
+import Tumaoda from './tumaoda';
 
 
 const MaskaniStack = createStackNavigator(
@@ -58,7 +59,8 @@ const OdaStack = createStackNavigator(
     {
       //Defination of Navigaton from setting screen
       Oda: { screen: Oda},
-      Malipo: { screen: Malipo}
+      Malipo: { screen: Malipo},
+      Tumaoda: { screen: Tumaoda}
     },
     {
       defaultNavigationOptions: {
