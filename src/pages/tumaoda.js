@@ -53,7 +53,9 @@ class Tumaoda extends Component {
               
             console.log("data",res);
             //Alert.alert("","data send an return id "+res.data)
-            let malipo_cart=this.props.malipo_cart;
+            let malipo_cart=this.props.app.malipo_cart;
+            console.log("malipo_cart",malipo_cart)
+            console.log("malipo_cart.length",malipo_cart.length)
                for(let x=0;x<malipo_cart.length;x++){
                     let malipo=malipo_cart[x];
                   axios.get("https://supergenge.000webhostapp.com/ordered_product.php",
@@ -63,15 +65,20 @@ class Tumaoda extends Component {
                       order_id:res.data,
                       product_name:malipo.name,
                       product_price:malipo.type,
-                      $quantity:malipo.quantity,
-                      $product_image:malipo.img
+                      quantity:malipo.quantity,
+                      product_image:malipo.img
                     }
                   })
                     .then(res => {
                       
-                      this.props.deleteMalipoCart(malipo.id);
+                      
                       console.log("data",res);
-                      let newl=malipo_cart.length-1;
+                      if(res.data != "failed"){
+                        this.props.deleteMalipoCart(malipo.id);
+                        this.props.removeCart(malipo.id)
+                      }
+                      let newl=malipo_cart.length - 1;
+                      console.log("newl",newl)
                       if(x==newl){
                         this.setState({loading:false});
                         Alert.alert("","Umefanikiwa kukamilisha oda");
